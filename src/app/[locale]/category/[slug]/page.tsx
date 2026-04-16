@@ -109,8 +109,8 @@ export default async function CategoryPage({
   params: { slug: string; locale: string };
 }) {
   const supabase = createServerClient();
-  await getTranslations("category");
-  await getTranslations("common");
+  await getTranslations({ locale: params.locale, namespace: "category" });
+  await getTranslations({ locale: params.locale, namespace: "common" });
 
   const isEs = params.locale === "es";
   const businessPath = (slug: string) => (isEs ? `/es/negocio/${slug}` : `/business/${slug}`);

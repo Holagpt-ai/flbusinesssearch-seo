@@ -153,8 +153,8 @@ export default async function CountyPage({
   params: { slug: string; locale: string };
 }) {
   const supabase = createServerClient();
-  const t = await getTranslations("county");
-  const tCommon = await getTranslations("common");
+  const t = await getTranslations({ locale: params.locale, namespace: "county" });
+  const tCommon = await getTranslations({ locale: params.locale, namespace: "common" });
   const isEs = params.locale === "es";
 
   const countyPath = (slug: string) => (isEs ? `/es/condado/${slug}` : `/county/${slug}`);
