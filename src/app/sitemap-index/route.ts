@@ -1,10 +1,9 @@
 import { createServerClient } from '@/lib/supabase';
-import { NextRequest } from 'next/server';
 
 const BASE_URL = 'https://flbusinesssearch.com';
 const PAGE_SIZE = 1000;
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const supabase = createServerClient();
 
   const { count } = await supabase
