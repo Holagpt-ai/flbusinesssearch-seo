@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "search": "Search",
+    "fileLLC": "File LLC",
+    "pricing": "Pricing",
+    "about": "About"
+  },
+  "common": {
+    "hotLead": "Hot Lead",
+    "warmLead": "Warm Lead",
+    "active": "Active",
+    "inactive": "Inactive",
+    "noWebsite": "No website found",
+    "noGBP": "No Google listing",
+    "filedToday": "Filed today",
+    "updatedDaily": "Updated daily from Sunbiz.org",
+    "free": "Free",
+    "viewProfile": "View profile",
+    "backToSearch": "Back to search",
+    "notAvailable": "Not available"
+  },
+  "home": {
+    "title": "Florida Business Name Availability Checker",
+    "sub": "Search 3.5M+ registered Florida businesses instantly.",
+    "searchPlaceholder": "Search a Florida business name...",
+    "searchBtn": "Search"
+  },
+  "business": {
+    "title": "{name} | Florida Business Record | FLBusinessSearch",
+    "description": "View the full Florida business record for {name}. Entity type, filing date, status, owner, registered agent, and more — sourced from Sunbiz.org.",
+    "information": "Business Information",
+    "digitalPresence": "Digital Presence",
+    "similarBusinesses": "Similar businesses in {county}",
+    "dataSource": "Data sourced from Sunbiz.org",
+    "lastVerified": "Last verified: {date}"
+  },
+  "county": {
+    "title": "{county} County Florida Businesses | FLBusinessSearch",
+    "description": "Browse {total}+ registered businesses in {county} County, Florida. Search by category, find new filings, and get lead alerts. Updated daily from Sunbiz.org.",
+    "heading": "{county} County Businesses",
+    "totalBusinesses": "Total businesses",
+    "newThisMonth": "New this month",
+    "topCategories": "Top categories",
+    "recentFilings": "Recent filings"
+  },
+  "category": {
+    "title": "{category} Businesses in Florida | FLBusinessSearch",
+    "description": "Find {category} businesses registered in Florida. Browse {total}+ records updated daily from Sunbiz.org.",
+    "heading": "{category} Businesses in Florida"
+  },
+  "footer": {
+    "tagline": "Florida business intelligence platform. Search, file, and grow — all powered by real-time Sunbiz data.",
+    "notAffiliated": "Not affiliated with Sunbiz.org",
+    "dataSource": "Data sourced from Florida Division of Corporations",
+    "updatedDaily": "Updated daily"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "search": "Buscar",
+    "fileLLC": "Formar LLC",
+    "pricing": "Precios",
+    "about": "Nosotros"
+  },
+  "common": {
+    "hotLead": "Lead Caliente",
+    "warmLead": "Lead Tibio",
+    "active": "Activo",
+    "inactive": "Inactivo",
+    "noWebsite": "Sin sitio web",
+    "noGBP": "Sin perfil de Google",
+    "filedToday": "Registrado hoy",
+    "updatedDaily": "Actualizado diariamente desde Sunbiz.org",
+    "free": "Gratis",
+    "viewProfile": "Ver perfil",
+    "backToSearch": "Volver a búsqueda",
+    "notAvailable": "No disponible"
+  },
+  "home": {
+    "title": "Verificador de Disponibilidad de Nombre de Negocio en Florida",
+    "sub": "Busca más de 3.5M de empresas registradas en Florida al instante.",
+    "searchPlaceholder": "Busca un nombre de negocio en Florida...",
+    "searchBtn": "Buscar"
+  },
+  "business": {
+    "title": "{name} | Registro de Negocio en Florida | FLBusinessSearch",
+    "description": "Ver el registro completo de {name} en Florida. Tipo de entidad, fecha de registro, estado, propietario, agente registrado y más — de Sunbiz.org.",
+    "information": "Información del Negocio",
+    "digitalPresence": "Presencia Digital",
+    "similarBusinesses": "Negocios similares en {county}",
+    "dataSource": "Datos de Sunbiz.org",
+    "lastVerified": "Última verificación: {date}"
+  },
+  "county": {
+    "title": "Negocios del Condado {county} Florida | FLBusinessSearch",
+    "description": "Explora más de {total} negocios registrados en el Condado {county}, Florida. Actualizado diariamente desde Sunbiz.org.",
+    "heading": "Negocios del Condado {county}",
+    "totalBusinesses": "Total de negocios",
+    "newThisMonth": "Nuevos este mes",
+    "topCategories": "Categorías principales",
+    "recentFilings": "Registros recientes"
+  },
+  "category": {
+    "title": "Negocios de {category} en Florida | FLBusinessSearch",
+    "description": "Encuentra negocios de {category} registrados en Florida. Más de {total} registros actualizados diariamente desde Sunbiz.org.",
+    "heading": "Negocios de {category} en Florida"
+  },
+  "footer": {
+    "tagline": "Plataforma de inteligencia empresarial de Florida. Busca, registra y crece — todo impulsado por datos de Sunbiz en tiempo real.",
+    "notAffiliated": "No afiliado con Sunbiz.org",
+    "dataSource": "Datos de la División de Corporaciones de Florida",
+    "updatedDaily": "Actualizado diariamente"
+  }
+}
