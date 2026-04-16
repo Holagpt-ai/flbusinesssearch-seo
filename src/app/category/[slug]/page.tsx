@@ -20,5 +20,5 @@ export async function generateMetadata({
 }
 
 export default async function CategoryPageEn({ params }: { params: { slug: string } }) {
-  return CategoryPageLocale({ params: { slug: params.slug, locale: 'en' } });
+  return <CategoryPageLocale params={{ slug: params.slug, locale: 'en' }} />;
 }

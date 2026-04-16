@@ -20,5 +20,5 @@ export async function generateMetadata({
 }
 
 export default async function CountyPageEn({ params }: { params: { slug: string } }) {
-  return CountyPageLocale({ params: { slug: params.slug, locale: 'en' } });
+  return <CountyPageLocale params={{ slug: params.slug, locale: 'en' }} />;
 }
