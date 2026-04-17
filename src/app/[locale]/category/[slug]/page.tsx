@@ -110,8 +110,7 @@ export default async function CategoryPage({
 }) {
   setRequestLocale(params.locale);
   const supabase = createServerClient();
-  await getTranslations({ locale: params.locale, namespace: "category" });
-  await getTranslations({ locale: params.locale, namespace: "common" });
+  const t = await getTranslations({ locale: params.locale, namespace: "category" });
 
   const isEs = params.locale === "es";
   const businessPath = (slug: string) => (isEs ? `/es/negocio/${slug}` : `/business/${slug}`);
@@ -206,7 +205,7 @@ export default async function CategoryPage({
             href={searchPath}
             className="text-sm text-[#6B6B6B] transition-colors hover:text-[#1A1A1A]"
           >
-            Search businesses
+            {t("searchBusinesses")}
           </Link>
         </div>
       </header>
@@ -214,7 +213,7 @@ export default async function CategoryPage({
       <main className="mx-auto max-w-5xl px-6 py-10">
         <nav className="mb-6 flex items-center gap-2 text-xs text-[#9B9B9B]">
           <Link href="/" className="hover:text-[#1A1A1A]">
-            Florida Businesses
+            {t("floridaBusinesses")}
           </Link>
           <span>›</span>
           <span className="text-[#1A1A1A]">{categoryName}</span>
@@ -222,21 +221,18 @@ export default async function CategoryPage({
 
         <div className="mb-10">
           <h1 className="font-display text-[36px] leading-tight text-[#1A1A1A] md:text-[48px]">
-            <span className="text-[#E8824A]">{categoryName}</span> Businesses
-            <br />
-            in Florida
+            {t("heading", { category: categoryName })}
           </h1>
           <p className="mt-3 max-w-2xl text-base text-[#6B6B6B]">
-            Browse registered {categoryName.toLowerCase()} businesses across Florida. Updated daily
-            from the Florida Division of Corporations.
+            {t("browseIntro", { category: categoryName.toLowerCase() })}
           </p>
         </div>
 
         <div className="mb-10 grid grid-cols-2 gap-4 md:grid-cols-3">
           {[
-            { value: businessCount?.toLocaleString() ?? "—", label: "Total businesses" },
-            { value: topCounties.length.toString(), label: "Counties active" },
-            { value: "Daily", label: "Data updated" },
+            { value: businessCount?.toLocaleString() ?? "—", label: t("totalBusinesses") },
+            { value: topCounties.length.toString(), label: t("countiesActive") },
+            { value: t("daily"), label: t("dataUpdated") },
           ].map((stat, index) => (
             <div key={index} className="rounded-xl border border-[#E8E4DC] bg-white p-5 text-center">
               <p className="font-display text-[28px] text-[#E8824A]">{stat.value}</p>
@@ -248,9 +244,11 @@ export default async function CategoryPage({
         {hotLeads && hotLeads.length > 0 && (
           <section className="mb-10">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="font-display text-xl text-[#1A1A1A]">🔥 Hot {categoryName} Leads</h2>
+              <h2 className="font-display text-xl text-[#1A1A1A]">
+                {t("hotLeadsHeading", { category: categoryName })}
+              </h2>
               <a href="https://flbusinesssearch.com/alerts" className="text-sm text-[#E8824A] hover:underline">
-                Get alerts →
+                {t("getAlerts")}
               </a>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -264,9 +262,9 @@ export default async function CategoryPage({
                     <div>
                       <p className="text-sm font-medium text-[#1A1A1A]">{biz.name}</p>
                       <p className="mt-1 text-xs text-[#9B9B9B]">
-                        {biz.county && `${biz.county} County`}
+                        {biz.county && `${biz.county} ${t("county")}`}
                         {biz.filing_date &&
-                          ` · Filed ${new Date(biz.filing_date).toLocaleDateString(dateLocale, {
+                          ` · ${t("filed")} ${new Date(biz.filing_date).toLocaleDateString(dateLocale, {
                             month: "short",
                             day: "numeric",
                             year: "numeric",
@@ -286,7 +284,7 @@ export default async function CategoryPage({
         {recentBusinesses && recentBusinesses.length > 0 && (
           <section className="mb-10">
             <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">
-              Recent {categoryName} Businesses in Florida
+              {t("recentHeading", { category: categoryName })}
             </h2>
             <div className="overflow-hidden rounded-2xl border border-[#E8E4DC] bg-white">
               {recentBusinesses.map((biz, index) => (
@@ -300,7 +298,7 @@ export default async function CategoryPage({
                   <div>
                     <p className="text-sm font-medium text-[#1A1A1A]">{biz.name}</p>
                     <p className="mt-0.5 text-xs text-[#9B9B9B]">
-                      {biz.county && `${biz.county} County`}
+                      {biz.county && `${biz.county} ${t("county")}`}
                       {biz.entity_type && ` · ${biz.entity_type}`}
                       {biz.filing_date &&
                         ` · ${new Date(biz.filing_date).toLocaleDateString(dateLocale, {
@@ -310,7 +308,9 @@ export default async function CategoryPage({
                     </p>
                   </div>
                   <div className="flex flex-shrink-0 items-center gap-2">
-                    {!biz.website_detected && <span className="text-xs text-[#9B9B9B]">No website</span>}
+                    {!biz.website_detected && (
+                      <span className="text-xs text-[#9B9B9B]">{t("noWebsite")}</span>
+                    )}
                     {biz.hot_lead && (
                       <span className="rounded-full bg-[#FDF0E8] px-2 py-0.5 text-xs text-[#E8824A]">
                         🔥
@@ -327,7 +327,7 @@ export default async function CategoryPage({
         {topCounties.length > 0 && (
           <section className="mb-10">
             <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">
-              {categoryName} Businesses by County
+              {t("byCountyHeading", { category: categoryName })}
             </h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
               {topCounties.map((county) => (
@@ -337,7 +337,9 @@ export default async function CategoryPage({
                   className="rounded-xl border border-[#E8E4DC] bg-white p-4 transition-colors hover:border-[#E8824A]"
                 >
                   <p className="text-sm font-medium text-[#1A1A1A]">{county.name}</p>
-                  <p className="mt-1 text-xs text-[#9B9B9B]">{county.count} businesses</p>
+                  <p className="mt-1 text-xs text-[#9B9B9B]">
+                    {county.count} {t("businesses")}
+                  </p>
                 </Link>
               ))}
             </div>
@@ -346,43 +348,36 @@ export default async function CategoryPage({
 
         <section className="mb-10 rounded-2xl bg-[#1A1A1A] p-8 text-center">
           <h2 className="mb-3 font-display text-[24px] text-white">
-            Get leads from new {categoryName} businesses
+            {t("ctaHeading", { category: categoryName })}
           </h2>
           <p className="mx-auto mb-6 max-w-md text-sm text-[#9B9B9B]">
-            New {categoryName.toLowerCase()} businesses register in Florida every day with no
-            website. Get alerted the same day they file.
+            {t("ctaSubtext", { category: categoryName.toLowerCase() })}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
               href="https://flbusinesssearch.com/alerts"
               className="rounded-full bg-[#E8824A] px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-[#D4713A]"
             >
-              Get lead alerts — $10/mo
+              {t("ctaButton")}
             </a>
             <a
               href={`https://flbusinesssearch.com/search?category=${encodeURIComponent(categoryName)}`}
               className="rounded-full border border-white px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10"
             >
-              Search {categoryName} businesses
+              {t("ctaSearch", { category: categoryName })}
             </a>
           </div>
         </section>
 
         <div className="border-t border-[#E8E4DC] pt-6 text-xs text-[#9B9B9B]">
-          <p>Data sourced from Sunbiz.org — Florida Division of Corporations · Updated daily</p>
-          <p className="mt-1">
-            FLBusinessSearch is not affiliated with the Florida Division of Corporations or
-            Sunbiz.org.
-          </p>
+          <p>{t("dataSource")}</p>
+          <p className="mt-1">{t("notAffiliated")}</p>
         </div>
       </main>
 
       <footer className="mt-16 bg-[#1A1A1A] px-6 py-8">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="text-xs text-[#6B6B6B]">
-            © 2026 FLBusinessSearch · Data sourced from Florida Division of Corporations · Updated
-            daily · Not affiliated with Sunbiz.org
-          </p>
+          <p className="text-xs text-[#6B6B6B]">{t("footerCopy")}</p>
         </div>
       </footer>
 
@@ -401,7 +396,7 @@ export default async function CategoryPage({
                 {
                   "@type": "ListItem",
                   position: 1,
-                  name: "Florida Businesses",
+                  name: t("floridaBusinesses"),
                   item: "https://flbusinesssearch.com",
                 },
                 {

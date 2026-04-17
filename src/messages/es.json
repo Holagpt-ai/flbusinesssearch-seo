@@ -31,8 +31,13 @@
     "information": "Información del Negocio",
     "digitalPresence": "Presencia Digital",
     "similarBusinesses": "Negocios similares en {county}",
-    "dataSource": "Datos de Sunbiz.org",
-    "lastVerified": "Última verificación: {date}"
+    "dataSource": "Datos de la División de Corporaciones de Florida · Actualizado diariamente · No afiliado con Sunbiz.org",
+    "lastVerified": "Última verificación: {date}",
+    "floridaBusinesses": "Negocios en Florida",
+    "searchBusinesses": "Buscar negocios",
+    "filed": "Registrado el",
+    "getLeadAlerts": "Obtener alertas de leads como este",
+    "seeSimilar": "Ver negocios similares"
   },
   "county": {
     "title": "Negocios del Condado {county} Florida | FLBusinessSearch",
@@ -61,7 +66,29 @@
   "category": {
     "title": "Negocios de {category} en Florida | FLBusinessSearch",
     "description": "Encuentra negocios de {category} registrados en Florida. Más de {total} registros actualizados diariamente desde Sunbiz.org.",
-    "heading": "Negocios de {category} en Florida"
+    "heading": "Negocios de {category} en Florida",
+    "browseIntro": "Explora los negocios de {category} registrados en Florida. Actualizado diariamente desde la División de Corporaciones de Florida.",
+    "totalBusinesses": "Total de negocios",
+    "countiesActive": "Condados activos",
+    "daily": "Diario",
+    "dataUpdated": "Datos actualizados",
+    "hotLeadsHeading": "🔥 Leads Calientes de {category}",
+    "getAlerts": "Obtener alertas →",
+    "county": "Condado",
+    "filed": "Registrado el",
+    "noWebsite": "Sin sitio web",
+    "recentHeading": "Negocios de {category} Recientes en Florida",
+    "byCountyHeading": "Negocios de {category} por Condado",
+    "businesses": "negocios",
+    "ctaHeading": "Obtén leads de nuevos negocios de {category}",
+    "ctaSubtext": "Nuevos negocios de {category} se registran en Florida cada día sin sitio web. Recibe alertas el mismo día que se registran.",
+    "ctaButton": "Obtener alertas de leads — $10/mes",
+    "ctaSearch": "Buscar negocios de {category}",
+    "floridaBusinesses": "Negocios en Florida",
+    "searchBusinesses": "Buscar negocios",
+    "dataSource": "Datos de Sunbiz.org — División de Corporaciones de Florida · Actualizado diariamente",
+    "notAffiliated": "FLBusinessSearch no está afiliado con la División de Corporaciones de Florida ni con Sunbiz.org.",
+    "footerCopy": "© 2026 FLBusinessSearch · Datos de la División de Corporaciones de Florida · Actualizado diariamente · No afiliado con Sunbiz.org"
   },
   "footer": {
     "tagline": "Plataforma de inteligencia empresarial de Florida. Busca, registra y crece — todo impulsado por datos de Sunbiz en tiempo real.",

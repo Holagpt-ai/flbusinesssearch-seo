@@ -81,7 +81,7 @@ export default async function BusinessProfilePage({
   params: { slug: string; locale: string };
 }) {
   const supabase = createServerClient();
-  const t = await getTranslations("business");
+  const tBusiness = await getTranslations("business");
   const tCommon = await getTranslations("common");
   const isEs = params.locale === "es";
 
@@ -145,7 +145,7 @@ export default async function BusinessProfilePage({
             href={searchPath}
             className="text-sm text-[#6B6B6B] transition-colors hover:text-[#1A1A1A]"
           >
-            ← {tCommon("backToSearch")}
+            ← {tBusiness("searchBusinesses")}
           </Link>
         </div>
       </header>
@@ -153,7 +153,7 @@ export default async function BusinessProfilePage({
       <main className="mx-auto max-w-5xl px-6 py-10">
         <nav className="mb-6 flex items-center gap-2 text-xs text-[#9B9B9B]">
           <Link href="/" className="hover:text-[#1A1A1A]">
-            Florida Businesses
+            {tBusiness("floridaBusinesses")}
           </Link>
           <span>›</span>
           {business.county && (
@@ -193,7 +193,7 @@ export default async function BusinessProfilePage({
             </h1>
             <p className="mt-2 text-sm text-[#6B6B6B]">
               {business.entity_type || "Business"} · {business.county || "Florida"}, Florida
-              {filingDate && ` · Filed ${filingDate}`}
+              {filingDate && ` · ${tBusiness("filed")} ${filingDate}`}
             </p>
           </div>
           <a
@@ -205,7 +205,7 @@ export default async function BusinessProfilePage({
         </div>
 
         <section className="mb-8">
-          <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">{t("information")}</h2>
+          <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">{tBusiness("information")}</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {[
               { label: "BUSINESS NAME", value: business.name },
@@ -236,7 +236,9 @@ export default async function BusinessProfilePage({
         </section>
 
         <section className="mb-8">
-          <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">{t("digitalPresence")}</h2>
+          <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">
+            {tBusiness("digitalPresence")}
+          </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-[#E8E4DC] bg-white p-5">
               <p className="mb-2 text-xs uppercase tracking-widest text-[#9B9B9B]">Website</p>
@@ -287,13 +289,13 @@ export default async function BusinessProfilePage({
                 href="https://flbusinesssearch.com/alerts"
                 className="rounded-full bg-[#E8824A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#D4713A]"
               >
-                Get lead alerts like this
+                {tBusiness("getLeadAlerts")}
               </a>
               <Link
                 href={similarSearchPath(business.county_slug)}
                 className="rounded-full border border-[#E8824A] px-5 py-2.5 text-sm font-medium text-[#E8824A] transition-colors hover:bg-[#FDF0E8]"
               >
-                See similar businesses
+                {tBusiness("seeSimilar")}
               </Link>
             </div>
           </section>
@@ -302,7 +304,7 @@ export default async function BusinessProfilePage({
         {similarBusinesses && similarBusinesses.length > 0 && (
           <section className="mb-8">
             <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">
-              {t("similarBusinesses", { county: business.county || "Florida" })}
+              {tBusiness("similarBusinesses", { county: business.county || "Florida" })}
             </h2>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               {similarBusinesses.map((biz) => (
@@ -337,8 +339,8 @@ export default async function BusinessProfilePage({
 
         <div className="border-t border-[#E8E4DC] pt-6 text-xs text-[#9B9B9B]">
           <p>
-            {t("dataSource")}
-            {lastVerified ? ` · ${t("lastVerified", { date: lastVerified })}` : ""}
+            {tBusiness("dataSource")}
+            {lastVerified ? ` · ${tBusiness("lastVerified", { date: lastVerified })}` : ""}
           </p>
           <p className="mt-1">
             FLBusinessSearch is not affiliated with the Florida Division of
@@ -349,10 +351,7 @@ export default async function BusinessProfilePage({
 
       <footer className="mt-16 bg-[#1A1A1A] px-6 py-8">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="text-xs text-[#6B6B6B]">
-            © 2026 FLBusinessSearch · Data sourced from Florida Division of
-            Corporations · Updated daily · Not affiliated with Sunbiz.org
-          </p>
+          <p className="text-xs text-[#6B6B6B]">{tBusiness("dataSource")}</p>
         </div>
       </footer>
 

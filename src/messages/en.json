@@ -31,8 +31,13 @@
     "information": "Business Information",
     "digitalPresence": "Digital Presence",
     "similarBusinesses": "Similar businesses in {county}",
-    "dataSource": "Data sourced from Sunbiz.org",
-    "lastVerified": "Last verified: {date}"
+    "dataSource": "Data sourced from Florida Division of Corporations · Updated daily · Not affiliated with Sunbiz.org",
+    "lastVerified": "Last verified: {date}",
+    "floridaBusinesses": "Florida Businesses",
+    "searchBusinesses": "Search businesses",
+    "filed": "Filed",
+    "getLeadAlerts": "Get lead alerts like this",
+    "seeSimilar": "See similar businesses"
   },
   "county": {
     "title": "{county} County Florida Businesses | FLBusinessSearch",
@@ -61,7 +66,29 @@
   "category": {
     "title": "{category} Businesses in Florida | FLBusinessSearch",
     "description": "Find {category} businesses registered in Florida. Browse {total}+ records updated daily from Sunbiz.org.",
-    "heading": "{category} Businesses in Florida"
+    "heading": "{category} Businesses in Florida",
+    "browseIntro": "Browse registered {category} businesses across Florida. Updated daily from the Florida Division of Corporations.",
+    "totalBusinesses": "Total businesses",
+    "countiesActive": "Counties active",
+    "daily": "Daily",
+    "dataUpdated": "Data updated",
+    "hotLeadsHeading": "🔥 Hot {category} Leads",
+    "getAlerts": "Get alerts →",
+    "county": "County",
+    "filed": "Filed",
+    "noWebsite": "No website",
+    "recentHeading": "Recent {category} Businesses in Florida",
+    "byCountyHeading": "{category} Businesses by County",
+    "businesses": "businesses",
+    "ctaHeading": "Get leads from new {category} businesses",
+    "ctaSubtext": "New {category} businesses register in Florida every day with no website. Get alerted the same day they file.",
+    "ctaButton": "Get lead alerts — $10/mo",
+    "ctaSearch": "Search {category} businesses",
+    "floridaBusinesses": "Florida Businesses",
+    "searchBusinesses": "Search businesses",
+    "dataSource": "Data sourced from Sunbiz.org — Florida Division of Corporations · Updated daily",
+    "notAffiliated": "FLBusinessSearch is not affiliated with the Florida Division of Corporations or Sunbiz.org.",
+    "footerCopy": "© 2026 FLBusinessSearch · Data sourced from Florida Division of Corporations · Updated daily · Not affiliated with Sunbiz.org"
   },
   "footer": {
     "tagline": "Florida business intelligence platform. Search, file, and grow — all powered by real-time Sunbiz data.",
