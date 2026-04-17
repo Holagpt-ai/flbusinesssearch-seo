@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { createServerClient } from "@/lib/supabase";
 
@@ -152,6 +152,7 @@ export default async function CountyPage({
 }: {
   params: { slug: string; locale: string };
 }) {
+  setRequestLocale(params.locale);
   const supabase = createServerClient();
   const t = await getTranslations({ locale: params.locale, namespace: "county" });
   const tCommon = await getTranslations({ locale: params.locale, namespace: "common" });

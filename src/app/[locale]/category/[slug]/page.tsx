@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { createServerClient } from "@/lib/supabase";
 
@@ -108,6 +108,7 @@ export default async function CategoryPage({
 }: {
   params: { slug: string; locale: string };
 }) {
+  setRequestLocale(params.locale);
   const supabase = createServerClient();
   await getTranslations({ locale: params.locale, namespace: "category" });
   await getTranslations({ locale: params.locale, namespace: "common" });
