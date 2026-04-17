@@ -41,7 +41,19 @@
     "totalBusinesses": "Total businesses",
     "newThisMonth": "New this month",
     "topCategories": "Top categories",
-    "recentFilings": "Recent filings"
+    "recentFilings": "Recent filings",
+    "hotLeadsHeading": "🔥 Hot Leads in {county} County",
+    "getAlerts": "Get alerts →",
+    "noWebsite": "No website",
+    "recentFilingsIn": "Recent filings in {county} County",
+    "topCategoriesIn": "Top categories in {county} County",
+    "ctaHeading": "Get leads from new {county} County businesses",
+    "ctaSubtext": "New businesses file in {county} County every day with no website. Get alerted the same day they register.",
+    "ctaButton": "Get lead alerts — $10/mo",
+    "dataSource": "Data sourced from Sunbiz.org — Florida Division of Corporations · Updated daily",
+    "notAffiliated": "FLBusinessSearch is not affiliated with the Florida Division of Corporations or Sunbiz.org.",
+    "footerCopy": "© 2026 FLBusinessSearch · Data sourced from Florida Division of Corporations · Updated daily · Not affiliated with Sunbiz.org",
+    "browseIntro": "Browse registered businesses in {county} County, Florida. Updated daily from the Florida Division of Corporations."
   },
   "category": {
     "title": "{category} Businesses in Florida | FLBusinessSearch",

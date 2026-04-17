@@ -258,8 +258,7 @@ export default async function CountyPage({
             {county.name} County <span className="text-[#E8824A]">Businesses</span>
           </h1>
           <p className="mt-3 max-w-2xl text-base text-[#6B6B6B]">
-            Browse registered businesses in {county.name} County, Florida. Updated daily from the
-            Florida Division of Corporations.
+            {t("browseIntro", { county: county.name })}
           </p>
         </div>
 
@@ -280,9 +279,9 @@ export default async function CountyPage({
         {hotLeads && hotLeads.length > 0 && (
           <section className="mb-10">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="font-display text-xl text-[#1A1A1A]">🔥 Hot Leads in {county.name} County</h2>
+              <h2 className="font-display text-xl text-[#1A1A1A]">{t("hotLeadsHeading", { county: county.name })}</h2>
               <a href="https://flbusinesssearch.com/alerts" className="text-sm text-[#E8824A] hover:underline">
-                Get alerts →
+                {t("getAlerts")}
               </a>
             </div>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
@@ -318,7 +317,7 @@ export default async function CountyPage({
         {recentFilings && recentFilings.length > 0 && (
           <section className="mb-10">
             <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">
-              {t("recentFilings")} in {county.name} County
+              {t("recentFilingsIn", { county: county.name })}
             </h2>
             <div className="overflow-hidden rounded-2xl border border-[#E8E4DC] bg-white">
               {recentFilings.map((biz, index) => (
@@ -342,9 +341,7 @@ export default async function CountyPage({
                     </p>
                   </div>
                   <div className="flex flex-shrink-0 items-center gap-2">
-                    {!biz.website_detected && (
-                      <span className="text-xs text-[#9B9B9B]">No website</span>
-                    )}
+                    {!biz.website_detected && <span className="text-xs text-[#9B9B9B]">{t("noWebsite")}</span>}
                     {biz.hot_lead && (
                       <span className="rounded-full bg-[#FDF0E8] px-2 py-0.5 text-xs text-[#E8824A]">
                         🔥
@@ -361,7 +358,7 @@ export default async function CountyPage({
         {topCategories.length > 0 && (
           <section className="mb-10">
             <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">
-              {t("topCategories")} in {county.name} County
+              {t("topCategoriesIn", { county: county.name })}
             </h2>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
               {topCategories.map(([category, count]) => (
@@ -380,35 +377,28 @@ export default async function CountyPage({
 
         <section className="mb-10 rounded-2xl bg-[#1A1A1A] p-8 text-center">
           <h2 className="mb-3 font-display text-[24px] text-white">
-            Get leads from new {county.name} County businesses
+            {t("ctaHeading", { county: county.name })}
           </h2>
           <p className="mx-auto mb-6 max-w-md text-sm text-[#9B9B9B]">
-            New businesses file in {county.name} County every day with no website. Get alerted the
-            same day they register.
+            {t("ctaSubtext", { county: county.name })}
           </p>
           <a
             href="https://flbusinesssearch.com/alerts"
             className="rounded-full bg-[#E8824A] px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-[#D4713A]"
           >
-            Get lead alerts — $10/mo
+            {t("ctaButton")}
           </a>
         </section>
 
         <div className="border-t border-[#E8E4DC] pt-6 text-xs text-[#9B9B9B]">
-          <p>Data sourced from Sunbiz.org — Florida Division of Corporations · Updated daily</p>
-          <p className="mt-1">
-            FLBusinessSearch is not affiliated with the Florida Division of Corporations or
-            Sunbiz.org.
-          </p>
+          <p>{t("dataSource")}</p>
+          <p className="mt-1">{t("notAffiliated")}</p>
         </div>
       </main>
 
       <footer className="mt-16 bg-[#1A1A1A] px-6 py-8">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="text-xs text-[#6B6B6B]">
-            © 2026 FLBusinessSearch · Data sourced from Florida Division of Corporations · Updated
-            daily · Not affiliated with Sunbiz.org
-          </p>
+          <p className="text-xs text-[#6B6B6B]">{t("footerCopy")}</p>
         </div>
       </footer>
 

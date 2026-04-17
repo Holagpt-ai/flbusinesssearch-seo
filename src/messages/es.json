@@ -41,7 +41,19 @@
     "totalBusinesses": "Total de negocios",
     "newThisMonth": "Nuevos este mes",
     "topCategories": "Categorías principales",
-    "recentFilings": "Registros recientes"
+    "recentFilings": "Registros recientes",
+    "hotLeadsHeading": "🔥 Leads Calientes en el Condado {county}",
+    "getAlerts": "Obtener alertas →",
+    "noWebsite": "Sin sitio web",
+    "recentFilingsIn": "Registros recientes en el Condado {county}",
+    "topCategoriesIn": "Categorías principales en el Condado {county}",
+    "ctaHeading": "Obtén leads de nuevos negocios en el Condado {county}",
+    "ctaSubtext": "Nuevos negocios se registran en el Condado {county} cada día sin sitio web. Recibe alertas el mismo día que se registran.",
+    "ctaButton": "Obtener alertas de leads — $10/mes",
+    "dataSource": "Datos de Sunbiz.org — División de Corporaciones de Florida · Actualizado diariamente",
+    "notAffiliated": "FLBusinessSearch no está afiliado con la División de Corporaciones de Florida ni con Sunbiz.org.",
+    "footerCopy": "© 2026 FLBusinessSearch · Datos de la División de Corporaciones de Florida · Actualizado diariamente · No afiliado con Sunbiz.org",
+    "browseIntro": "Explora los negocios registrados en el Condado {county}, Florida. Actualizado diariamente desde la División de Corporaciones de Florida."
   },
   "category": {
     "title": "Negocios de {category} en Florida | FLBusinessSearch",
