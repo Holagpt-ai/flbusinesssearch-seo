@@ -255,7 +255,7 @@ export default async function CountyPage({
 
         <div className="mb-10">
           <h1 className="font-display text-[36px] leading-tight text-[#1A1A1A] md:text-[48px]">
-            {county.name} County <span className="text-[#E8824A]">Businesses</span>
+            {t("heading", { county: county.name })}
           </h1>
           <p className="mt-3 max-w-2xl text-base text-[#6B6B6B]">
             {t("browseIntro", { county: county.name })}
@@ -267,7 +267,7 @@ export default async function CountyPage({
             { value: totalBusinesses?.toLocaleString() ?? "—", label: t("totalBusinesses") },
             { value: newThisMonth?.toLocaleString() ?? "0", label: t("newThisMonth") },
             { value: topCategories.length.toString(), label: t("topCategories") },
-            { value: "Daily", label: tCommon("updatedDaily").split(" ")[0] },
+            { value: t("daily"), label: tCommon("updatedDaily").split(" ")[0] },
           ].map((stat, index) => (
             <div key={index} className="rounded-xl border border-[#E8E4DC] bg-white p-5 text-center">
               <p className="font-display text-[28px] text-[#E8824A]">{stat.value}</p>
@@ -297,7 +297,7 @@ export default async function CountyPage({
                       <p className="mt-1 text-xs text-[#9B9B9B]">
                         {biz.entity_type}
                         {biz.filing_date &&
-                          ` · Filed ${new Date(biz.filing_date).toLocaleDateString(dateLocale, {
+                          ` · ${t("filed")} ${new Date(biz.filing_date).toLocaleDateString(dateLocale, {
                             month: "short",
                             day: "numeric",
                             year: "numeric",
@@ -368,7 +368,7 @@ export default async function CountyPage({
                   className="rounded-xl border border-[#E8E4DC] bg-white p-4 transition-colors hover:border-[#E8824A]"
                 >
                   <p className="text-sm font-medium text-[#1A1A1A]">{category}</p>
-                  <p className="mt-1 text-xs text-[#9B9B9B]">{count} businesses</p>
+                  <p className="mt-1 text-xs text-[#9B9B9B]">{count} {t("businesses")}</p>
                 </a>
               ))}
             </div>

@@ -53,7 +53,10 @@
     "dataSource": "Datos de Sunbiz.org — División de Corporaciones de Florida · Actualizado diariamente",
     "notAffiliated": "FLBusinessSearch no está afiliado con la División de Corporaciones de Florida ni con Sunbiz.org.",
     "footerCopy": "© 2026 FLBusinessSearch · Datos de la División de Corporaciones de Florida · Actualizado diariamente · No afiliado con Sunbiz.org",
-    "browseIntro": "Explora los negocios registrados en el Condado {county}, Florida. Actualizado diariamente desde la División de Corporaciones de Florida."
+    "browseIntro": "Explora los negocios registrados en el Condado {county}, Florida. Actualizado diariamente desde la División de Corporaciones de Florida.",
+    "filed": "Registrado el",
+    "businesses": "negocios",
+    "daily": "Diario"
   },
   "category": {
     "title": "Negocios de {category} en Florida | FLBusinessSearch",

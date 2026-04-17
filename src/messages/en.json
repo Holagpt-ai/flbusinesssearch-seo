@@ -53,7 +53,10 @@
     "dataSource": "Data sourced from Sunbiz.org — Florida Division of Corporations · Updated daily",
     "notAffiliated": "FLBusinessSearch is not affiliated with the Florida Division of Corporations or Sunbiz.org.",
     "footerCopy": "© 2026 FLBusinessSearch · Data sourced from Florida Division of Corporations · Updated daily · Not affiliated with Sunbiz.org",
-    "browseIntro": "Browse registered businesses in {county} County, Florida. Updated daily from the Florida Division of Corporations."
+    "browseIntro": "Browse registered businesses in {county} County, Florida. Updated daily from the Florida Division of Corporations.",
+    "filed": "Filed",
+    "businesses": "businesses",
+    "daily": "Daily"
   },
   "category": {
     "title": "{category} Businesses in Florida | FLBusinessSearch",
