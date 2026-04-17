@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { createServerClient } from "@/lib/supabase";
 import type { Business } from "@/types";
@@ -80,9 +80,10 @@ export default async function BusinessProfilePage({
 }: {
   params: { slug: string; locale: string };
 }) {
+  setRequestLocale(params.locale);
   const supabase = createServerClient();
-  const tBusiness = await getTranslations("business");
-  const tCommon = await getTranslations("common");
+  const tBusiness = await getTranslations({ locale: params.locale, namespace: "business" });
+  const tCommon = await getTranslations({ locale: params.locale, namespace: "common" });
   const isEs = params.locale === "es";
 
   const searchPath = isEs ? "/es/buscar" : "/search";
