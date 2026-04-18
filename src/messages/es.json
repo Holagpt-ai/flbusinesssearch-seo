@@ -77,7 +77,10 @@
     "browseIntro": "Explora los negocios registrados en el Condado {county}, Florida. Actualizado diariamente desde la División de Corporaciones de Florida.",
     "filed": "Registrado el",
     "businesses": "negocios",
-    "daily": "Diario"
+    "daily": "Diario",
+    "hot": "Caliente",
+    "floridaBusinesses": "Negocios en Florida",
+    "searchBusinesses": "Buscar negocios"
   },
   "category": {
     "title": "Negocios de {category} en Florida | FLBusinessSearch",
@@ -88,6 +91,7 @@
     "countiesActive": "Condados activos",
     "daily": "Diario",
     "dataUpdated": "Datos actualizados",
+    "hot": "Caliente",
     "hotLeadsHeading": "🔥 Leads Calientes de {category}",
     "getAlerts": "Obtener alertas →",
     "county": "Condado",

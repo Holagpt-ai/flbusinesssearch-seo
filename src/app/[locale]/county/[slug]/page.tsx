@@ -239,7 +239,7 @@ export default async function CountyPage({
             href={searchPath}
             className="text-sm text-[#6B6B6B] transition-colors hover:text-[#1A1A1A]"
           >
-            Search businesses
+            {t("searchBusinesses")}
           </Link>
         </div>
       </header>
@@ -247,7 +247,7 @@ export default async function CountyPage({
       <main className="mx-auto max-w-5xl px-6 py-10">
         <nav className="mb-6 flex items-center gap-2 text-xs text-[#9B9B9B]">
           <Link href="/" className="hover:text-[#1A1A1A]">
-            Florida Businesses
+            {t("floridaBusinesses")}
           </Link>
           <span>›</span>
           <span className="text-[#1A1A1A]">{county.name} County</span>
@@ -305,7 +305,7 @@ export default async function CountyPage({
                       </p>
                     </div>
                     <span className="flex-shrink-0 rounded-full border border-[#E8824A]/30 bg-[#FDF0E8] px-2 py-0.5 text-xs text-[#E8824A]">
-                      🔥 Hot
+                      🔥 {t("hot")}
                     </span>
                   </div>
                 </Link>

@@ -77,7 +77,10 @@
     "browseIntro": "Browse registered businesses in {county} County, Florida. Updated daily from the Florida Division of Corporations.",
     "filed": "Filed",
     "businesses": "businesses",
-    "daily": "Daily"
+    "daily": "Daily",
+    "hot": "Hot",
+    "floridaBusinesses": "Florida Businesses",
+    "searchBusinesses": "Search businesses"
   },
   "category": {
     "title": "{category} Businesses in Florida | FLBusinessSearch",
@@ -88,6 +91,7 @@
     "countiesActive": "Counties active",
     "daily": "Daily",
     "dataUpdated": "Data updated",
+    "hot": "Hot",
     "hotLeadsHeading": "🔥 Hot {category} Leads",
     "getAlerts": "Get alerts →",
     "county": "County",

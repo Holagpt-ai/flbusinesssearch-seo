@@ -272,7 +272,7 @@ export default async function CategoryPage({
                       </p>
                     </div>
                     <span className="flex-shrink-0 rounded-full border border-[#E8824A]/30 bg-white px-2 py-0.5 text-xs text-[#E8824A]">
-                      🔥 Hot
+                      🔥 {t("hot")}
                     </span>
                   </div>
                 </Link>
