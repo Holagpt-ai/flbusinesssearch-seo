@@ -32,14 +32,26 @@ export async function GET(request: NextRequest, { params }: { params: { page: st
   }
 
   const urls = businesses
-    .map(
-      (b) => `
+    .flatMap(
+      (b) => {
+        const lastmod = b.updated_at ? new Date(b.updated_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
+        return [
+`
  <url>
    <loc>${BASE_URL}/business/${b.slug}</loc>
-   <lastmod>${b.updated_at ? new Date(b.updated_at).toISOString().split('T')[0] : new Date().toISOString().split('T')[0]}</lastmod>
+   <lastmod>${lastmod}</lastmod>
    <changefreq>weekly</changefreq>
    <priority>0.6</priority>
  </url>`,
+`
+ <url>
+   <loc>${BASE_URL}/es/negocio/${b.slug}</loc>
+   <lastmod>${lastmod}</lastmod>
+   <changefreq>weekly</changefreq>
+   <priority>0.6</priority>
+ </url>`,
+        ];
+      }
     )
     .join('');
 
