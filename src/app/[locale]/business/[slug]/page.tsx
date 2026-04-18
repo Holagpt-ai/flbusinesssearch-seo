@@ -212,7 +212,7 @@ export default async function BusinessProfilePage({
             {[
               { label: t("fieldBusinessName"), value: business.name },
               { label: t("fieldEntityType"), value: business.entity_type },
-              { label: t("fieldStatus"), value: business.status },
+              { label: t("fieldStatus"), value: isActive ? tCommon("active") : tCommon("inactive") },
               { label: t("fieldFilingDate"), value: filingDate },
               {
                 label: t("fieldCounty"),
@@ -243,7 +243,9 @@ export default async function BusinessProfilePage({
           </h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div className="rounded-xl border border-[#E8E4DC] bg-white p-5">
-              <p className="mb-2 text-xs uppercase tracking-widest text-[#9B9B9B]">Website</p>
+              <p className="mb-2 text-xs uppercase tracking-widest text-[#9B9B9B]">
+                {t("fieldWebsite")}
+              </p>
               {hasWebsite && business.website_url ? (
                 <a
                   href={business.website_url}
@@ -264,7 +266,7 @@ export default async function BusinessProfilePage({
             </div>
             <div className="rounded-xl border border-[#E8E4DC] bg-white p-5">
               <p className="mb-2 text-xs uppercase tracking-widest text-[#9B9B9B]">
-                Google Business Profile
+                {t("fieldGoogleProfile")}
               </p>
               {hasGBP ? (
                 <p className="text-sm text-[#2A7F6F]">● GBP found</p>

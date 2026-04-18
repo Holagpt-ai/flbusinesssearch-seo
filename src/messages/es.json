@@ -45,6 +45,8 @@
     "fieldOwner": "PROPIETARIO / OFICIAL",
     "fieldRegisteredAgent": "AGENTE REGISTRADO",
     "fieldOwnerAddress": "DIRECCIÓN DEL PROPIETARIO",
+    "fieldWebsite": "SITIO WEB",
+    "fieldGoogleProfile": "PERFIL DE GOOGLE",
     "noWebsiteDesigner": "Este negocio no tiene sitio web. ¿Eres diseñador web?",
     "vendorCtaLabel": "¿Es este negocio tu próximo cliente?",
     "vendorCtaHeading": "Este negocio no tiene sitio web ni perfil de Google.",

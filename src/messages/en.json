@@ -45,6 +45,8 @@
     "fieldOwner": "OWNER / OFFICER",
     "fieldRegisteredAgent": "REGISTERED AGENT",
     "fieldOwnerAddress": "OWNER ADDRESS",
+    "fieldWebsite": "WEBSITE",
+    "fieldGoogleProfile": "GOOGLE BUSINESS PROFILE",
     "noWebsiteDesigner": "This business has no website. Are you a web designer?",
     "vendorCtaLabel": "Is this business your next customer?",
     "vendorCtaHeading": "This business has no website and no Google listing.",
