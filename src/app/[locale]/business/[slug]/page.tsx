@@ -84,6 +84,7 @@ export default async function BusinessProfilePage({
   const supabase = createServerClient();
   const tBusiness = await getTranslations({ locale: params.locale, namespace: "business" });
   const tCommon = await getTranslations({ locale: params.locale, namespace: "common" });
+  const t = tBusiness;
   const isEs = params.locale === "es";
 
   const searchPath = isEs ? "/es/buscar" : "/search";
@@ -194,14 +195,14 @@ export default async function BusinessProfilePage({
             </h1>
             <p className="mt-2 text-sm text-[#6B6B6B]">
               {business.entity_type || "Business"} · {business.county || "Florida"}, Florida
-              {filingDate && ` · ${tBusiness("filed")} ${filingDate}`}
+              {filingDate && ` · ${t("filed")} ${filingDate}`}
             </p>
           </div>
           <a
             href="https://flbusinesssearch.com/file-llc"
             className="whitespace-nowrap rounded-full bg-[#E8824A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#D4713A]"
           >
-            Start my LLC →
+            {t("startLLC")}
           </a>
         </div>
 
@@ -209,17 +210,17 @@ export default async function BusinessProfilePage({
           <h2 className="mb-4 font-display text-xl text-[#1A1A1A]">{tBusiness("information")}</h2>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {[
-              { label: "BUSINESS NAME", value: business.name },
-              { label: "ENTITY TYPE", value: business.entity_type },
-              { label: "STATUS", value: business.status },
-              { label: "FILING DATE", value: filingDate },
+              { label: t("fieldBusinessName"), value: business.name },
+              { label: t("fieldEntityType"), value: business.entity_type },
+              { label: t("fieldStatus"), value: business.status },
+              { label: t("fieldFilingDate"), value: filingDate },
               {
-                label: "COUNTY",
+                label: t("fieldCounty"),
                 value: business.county ? `${business.county}, Florida` : null,
               },
-              { label: "OWNER / OFFICER", value: business.owner_name },
-              { label: "REGISTERED AGENT", value: business.registered_agent },
-              { label: "OWNER ADDRESS", value: business.owner_address },
+              { label: t("fieldOwner"), value: business.owner_name },
+              { label: t("fieldRegisteredAgent"), value: business.registered_agent },
+              { label: t("fieldOwnerAddress"), value: business.owner_address },
             ].map((field) => (
               <div
                 key={field.label}
@@ -257,7 +258,7 @@ export default async function BusinessProfilePage({
               )}
               {!hasWebsite && (
                 <p className="mt-2 text-xs text-[#E8824A]">
-                  This business has no website. Are you a web designer?
+                  {t("noWebsiteDesigner")}
                 </p>
               )}
             </div>
@@ -277,13 +278,13 @@ export default async function BusinessProfilePage({
         {isHotLead && (
           <section className="mb-8 rounded-2xl border border-[#E8824A]/20 bg-[#FDF0E8] p-6">
             <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#E8824A]">
-              Is this business your next customer?
+              {t("vendorCtaLabel")}
             </p>
             <h3 className="mb-2 font-display text-lg text-[#1A1A1A]">
-              This business has no website and no Google listing.
+              {t("vendorCtaHeading")}
             </h3>
             <p className="mb-4 text-sm text-[#6B6B6B]">
-              They registered recently and need vendors like you.
+              {t("vendorCtaSubtext")}
             </p>
             <div className="flex flex-wrap gap-3">
               <a
@@ -344,8 +345,7 @@ export default async function BusinessProfilePage({
             {lastVerified ? ` · ${tBusiness("lastVerified", { date: lastVerified })}` : ""}
           </p>
           <p className="mt-1">
-            FLBusinessSearch is not affiliated with the Florida Division of
-            Corporations or Sunbiz.org.
+            {t("notAffiliatedFull")}
           </p>
         </div>
       </main>
