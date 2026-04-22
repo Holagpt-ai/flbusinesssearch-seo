@@ -362,6 +362,7 @@ async function upsertBatch(supabase, batch) {
 
 async function main() {
   const testMode = process.argv.includes("--test");
+  const localMode = process.argv.includes('--local');
   const startedAt = Date.now();
   const supabaseUrl = requireEnv("SUPABASE_URL");
   const serviceKey = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
@@ -387,29 +388,39 @@ async function main() {
   const zipLocalPath = path.join(tempDir, "cordata.zip");
 
   try {
-    const sftp = new SftpClient();
-    const remoteZip = pickSftpZipPath(mode);
-
-    try {
-      await sftp.connect({
-        host: sftpHost,
-        username: sftpUsername,
-        password: sftpPassword,
+    let rl;
+    if (localMode) {
+      const localFilePath = '/root/cordata-extract/cordata0.txt';
+      console.log('[local mode] Reading from ' + localFilePath);
+      rl = readline.createInterface({
+        input: fs.createReadStream(localFilePath, { encoding: 'utf8' }),
+        crlfDelay: Infinity,
       });
-      await sftp.fastGet(remoteZip, zipLocalPath);
-    } finally {
-      try {
-        await sftp.end();
-      } catch {
-        // ignore
-      }
-    }
+    } else {
+      const sftp = new SftpClient();
+      const remoteZip = pickSftpZipPath(mode);
 
-    const extractedFile = extractFirstDataFile(zipLocalPath, tempDir);
-    const rl = readline.createInterface({
-      input: fs.createReadStream(extractedFile, { encoding: "utf8" }),
-      crlfDelay: Infinity,
-    });
+      try {
+        await sftp.connect({
+          host: sftpHost,
+          username: sftpUsername,
+          password: sftpPassword,
+        });
+        await sftp.fastGet(remoteZip, zipLocalPath);
+      } finally {
+        try {
+          await sftp.end();
+        } catch {
+          // ignore
+        }
+      }
+
+      const extractedFile = extractFirstDataFile(zipLocalPath, tempDir);
+      rl = readline.createInterface({
+        input: fs.createReadStream(extractedFile, { encoding: "utf8" }),
+        crlfDelay: Infinity,
+      });
+    }
 
     let batch = [];
     for await (const line of rl) {
