@@ -196,43 +196,66 @@ function extractFirstDataFile(zipPath, outDir) {
 
 function parseRecordLine(line) {
   const raw = String(line ?? "");
-  if (raw.length < RECORD_LENGTH) return null;
+  if (raw.length < 480) {
+    console.warn(`parseRecordLine: line length ${raw.length} is less than 480; skipping`);
+    return null;
+  }
 
-  const documentNumber = safeTrim(raw.slice(0, 12));
-  const name = safeTrim(raw.slice(12, 132));
-  const filingDateRaw = safeTrim(raw.slice(132, 140));
-  const statusCode = safeTrim(raw.slice(140, 142));
-  const entityTypeRaw = raw.slice(142, 145);
-  const principalCity = safeTrim(raw.slice(265, 305));
-  const principalState = safeTrim(raw.slice(305, 307));
-  const registeredAgentName = safeTrim(raw.slice(317, 377));
-  const officer1Name = safeTrim(raw.slice(489, 549));
+  const document_number = safeTrim(raw.slice(0, 12));
+  const name = safeTrim(raw.slice(12, 204));
+  const status_flag = raw.charAt(204) || "";
+  const entity_type_code = raw.slice(207, 209);
+  const street_address = safeTrim(raw.slice(220, 300));
+  const city = safeTrim(raw.slice(300, 332));
+  const state = safeTrim(raw.slice(332, 334));
+  const zip = safeTrim(raw.slice(334, 339));
+  const filing_date_raw = safeTrim(raw.slice(472, 480));
 
-  if (!documentNumber || !name) return null;
+  if (!document_number || !name) return null;
 
-  const status = normalizeStatus(statusCode);
-  const entity_type = normalizeEntityType(entityTypeRaw);
-  const filing_date = yyyymmddToIso(filingDateRaw);
+  let status;
+  if (status_flag === "I") status = "Active";
+  else if (status_flag === "A") status = "Inactive";
+  else status = "Unknown";
 
-  const county = countyFromCity(principalCity);
+  let entity_type;
+  if (entity_type_code === "AL") entity_type = "LLC";
+  else if (entity_type_code === "NP" || entity_type_code === "MN") entity_type = "Non-Profit Corporation";
+  else if (entity_type_code === "MP" || entity_type_code === "P ") entity_type = "For-Profit Corporation";
+  else if (entity_type_code === "PA") entity_type = "Professional Association";
+  else entity_type = safeTrim(entity_type_code);
+
+  let filing_date = null;
+  if (filing_date_raw.length === 8 && /^\d{8}$/.test(filing_date_raw) && !/^0+$/.test(filing_date_raw)) {
+    const mm = filing_date_raw.slice(0, 2);
+    const dd = filing_date_raw.slice(2, 4);
+    const yyyy = filing_date_raw.slice(4, 8);
+    filing_date = `${yyyy}-${mm}-${dd}`;
+  }
+
+  const county = countyFromCity(city);
   const county_slug = county ? toCountySlug(county) : null;
-
   const name_norm = nameNormalized(name);
   const slug = slugFrom(name_norm, county_slug);
 
   return {
-    sunbiz_document_number: documentNumber,
+    document_number,
+    sunbiz_document_number: document_number,
     name,
     name_normalized: name_norm || null,
     slug: slug || null,
     filing_date,
     status,
-    entity_type: entity_type || null,
+    entity_type,
+    street_address,
+    city,
+    state,
+    zip,
     county,
     county_slug,
-    owner_name: officer1Name || null,
-    registered_agent: registeredAgentName || null,
-    principal_state: principalState,
+    owner_name: null,
+    registered_agent: null,
+    principal_state: state,
   };
 }
 
@@ -333,6 +356,7 @@ async function upsertBatch(supabase, batch) {
 }
 
 async function main() {
+  const testMode = process.argv.includes("--test");
   const startedAt = Date.now();
   const supabaseUrl = requireEnv("SUPABASE_URL");
   const serviceKey = requireEnv("SUPABASE_SERVICE_ROLE_KEY");
@@ -351,6 +375,7 @@ async function main() {
   let totalInserted = 0;
   let totalSkipped = 0;
   let totalErrors = 0;
+  let testRecordsParsed = 0;
   const insertedIds = [];
 
   const tempDir = makeTempDir();
@@ -383,9 +408,17 @@ async function main() {
 
     let batch = [];
     for await (const line of rl) {
+      if (testMode && totalParsed >= 100) break;
       totalParsed += 1;
       try {
         const parsed = parseRecordLine(line);
+        if (testMode) {
+          if (parsed) {
+            console.log(JSON.stringify(parsed, null, 2));
+            testRecordsParsed += 1;
+          }
+          continue;
+        }
         if (!passesFilters(parsed)) {
           totalSkipped += 1;
           continue;
@@ -410,7 +443,7 @@ async function main() {
       }
     }
 
-    if (batch.length > 0) {
+    if (!testMode && batch.length > 0) {
       try {
         const res = await upsertBatch(supabase, batch);
         totalInserted += res.insertedCount;
@@ -419,6 +452,10 @@ async function main() {
         totalErrors += 1;
         console.error("final batch upsert error", e);
       }
+    }
+
+    if (testMode) {
+      console.log(`TEST MODE COMPLETE — ${testRecordsParsed} records parsed, 0 inserted`);
     }
 
     if (totalErrors > 0 && totalInserted === 0) status = "error";
