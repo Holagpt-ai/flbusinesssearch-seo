@@ -10,8 +10,8 @@ const SftpClient = require("ssh2-sftp-client");
 const AdmZip = require("adm-zip");
 const { createClient } = require("@supabase/supabase-js");
 
-const DAILY_ZIP_PATH = "/doc/daily/cor/cordata.zip";
-const QUARTERLY_ZIP_PATH = "/doc/quarterly/cor/cordata.zip";
+const DAILY_ZIP_PATH = "/Public/doc/cor/cordata.zip";
+const QUARTERLY_ZIP_PATH = "/Public/doc/Quarterly/Cor/cordata.zip";
 const RECORD_LENGTH = 1440;
 const BATCH_SIZE = 500;
 
@@ -265,7 +265,12 @@ function passesFilters(rec) {
   if (rec.principal_state !== "FL") return false;
   const year = parseInt(rec.filing_date?.slice(0, 4) ?? "0", 10);
   if (!Number.isFinite(year) || year < 2020) return false;
-  const allowed = new Set(["LLC", "Corp", "LP", "PA", "NP"]);
+  const allowed = new Set([
+    "LLC",
+    "Non-Profit Corporation",
+    "For-Profit Corporation",
+    "Professional Association",
+  ]);
   if (!allowed.has(rec.entity_type)) return false;
   if (!rec.sunbiz_document_number) return false;
   if (!rec.slug) return false;
