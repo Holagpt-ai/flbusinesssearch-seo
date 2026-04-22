@@ -339,9 +339,17 @@ async function upsertBatch(supabase, batch) {
   const existing = new Set((existingRows ?? []).map((x) => x.sunbiz_document_number).filter(Boolean));
   const newDocNums = docNums.filter((d) => !existing.has(d));
 
+  // Deduplicate payload by slug to avoid unique constraint violations
+  const seen = new Set();
+  const dedupedPayload = payload.filter((r) => {
+    if (!r.slug || seen.has(r.slug)) return false;
+    seen.add(r.slug);
+    return true;
+  });
+
   const { error: upsertErr } = await supabase
     .from("businesses")
-    .upsert(payload, { onConflict: "sunbiz_document_number" });
+    .upsert(dedupedPayload, { onConflict: "sunbiz_document_number", ignoreDuplicates: false });
   if (upsertErr) throw upsertErr;
 
   let insertedIds = [];
