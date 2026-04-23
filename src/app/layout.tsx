@@ -29,8 +29,23 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "FLBusinessSearch",
+    url: "https://flbusinesssearch.com",
+    logo: "https://flbusinesssearch.com/og-image.png",
+    sameAs: ["https://twitter.com/FLBizSearch"],
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

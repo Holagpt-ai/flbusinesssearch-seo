@@ -115,5 +115,117 @@
     "notAffiliated": "No afiliado con Sunbiz.org",
     "dataSource": "Datos de la División de Corporaciones de Florida",
     "updatedDaily": "Actualizado diariamente"
+  },
+  "privacy": {
+    "title": "Política de privacidad | FLBusinessSearch",
+    "description": "Cómo FLBusinessSearch recopila, utiliza y protege la información cuando usas nuestra búsqueda de negocios en Florida y servicios relacionados.",
+    "heading": "Política de privacidad",
+    "breadcrumbHome": "Inicio",
+    "updated": "Última actualización: 23 de abril de 2026",
+    "intro": "FLBusinessSearch («nosotros») opera flbusinesssearch.com y productos relacionados. Esta Política de privacidad explica cómo tratamos la información cuando usas nuestros sitios, herramientas de búsqueda, alertas de leads u otros servicios (en conjunto, los «Servicios»). Al usar los Servicios, aceptas esta política.",
+    "sections": {
+      "informationWeCollect": {
+        "title": "Información que recopilamos",
+        "body": "Podemos recopilar: (1) información que nos proporcionas directamente, como correo electrónico o datos de cuenta al registrarte en alertas, contactarnos o contratar servicios; (2) datos de uso y técnicos, como dirección IP, tipo de navegador, identificadores del dispositivo, ubicación general derivada de la IP, páginas vistas y URL de referencia; y (3) registros empresariales y metadatos relacionados mostrados en los resultados de búsqueda, obtenidos de presentaciones públicas publicadas por la División de Corporaciones de Florida (Sunbiz.org) y otras fuentes públicas lícitas."
+      },
+      "howWeUse": {
+        "title": "Cómo usamos la información",
+        "body": "Usamos la información para operar, mantener y mejorar los Servicios; personalizar contenido; procesar transacciones; enviar comunicaciones relacionadas con el servicio; brindar soporte; detectar, prevenir y abordar fraude, abuso o problemas de seguridad; analizar tendencias de uso; y cumplir obligaciones legales. Con tu consentimiento cuando sea requerido, podemos enviar mensajes de marketing, de los que puedes darte de baja en cualquier momento."
+      },
+      "sharing": {
+        "title": "Compartición y divulgación",
+        "body": "Podemos compartir información con proveedores que nos asisten (por ejemplo, alojamiento, analíticas, envío de correo o procesamiento de pagos) sujeto a obligaciones de confidencialidad. Podemos divulgar información si la ley, un reglamento, un proceso legal o una solicitud gubernamental lo exige, o para proteger los derechos, la propiedad o la seguridad de FLBusinessSearch, nuestros usuarios u otros. No vendemos tu información personal tal como se define «venta» en las leyes estatales de privacidad de EE. UU. aplicables, salvo lo descrito en esta política o con tu consentimiento."
+      },
+      "cookies": {
+        "title": "Cookies y tecnologías similares",
+        "body": "Usamos cookies, almacenamiento local, píxeles y tecnologías similares para recordar preferencias, medir el rendimiento y entender cómo se usan los Servicios. Puedes controlar las cookies en la configuración del navegador; desactivarlas puede limitar algunas funciones."
+      },
+      "retention": {
+        "title": "Conservación",
+        "body": "Conservamos la información el tiempo necesario para prestar los Servicios, cumplir la ley, resolver disputas y hacer valer nuestros acuerdos. Los plazos pueden variar según el tipo de datos y la naturaleza de nuestra relación contigo."
+      },
+      "security": {
+        "title": "Seguridad",
+        "body": "Aplicamos medidas administrativas, técnicas y organizativas razonables para proteger la información. Ningún método de transmisión o almacenamiento es totalmente seguro; no podemos garantizar una seguridad absoluta."
+      },
+      "rights": {
+        "title": "Tus opciones y derechos",
+        "body": "Según donde vivas, puedes tener derechos de acceso, rectificación, supresión o restricción del tratamiento de tu información personal, u oponerte a ciertos tratamientos. También puedes tener derecho a recurrir nuestras respuestas. Para ejercer estos derechos, contáctanos con la información indicada más abajo. Los residentes de ciertos estados de EE. UU. pueden designar un agente autorizado según permita la ley."
+      },
+      "children": {
+        "title": "Privacidad infantil",
+        "body": "Los Servicios no están dirigidos a menores de 13 años y no recopilamos a sabiendas información personal de menores de 13 años. Si crees que hemos recopilado dicha información, contáctanos y tomaremos medidas adecuadas para eliminarla."
+      },
+      "international": {
+        "title": "Usuarios internacionales",
+        "body": "Si accedes a los Servicios desde fuera de Estados Unidos, entiendes que tu información puede tratarse en Estados Unidos u otros países donde operamos nosotros o nuestros proveedores, que pueden tener leyes de protección de datos distintas a las de tu jurisdicción."
+      },
+      "changes": {
+        "title": "Cambios a esta política",
+        "body": "Podemos actualizar esta Política de privacidad ocasionalmente. Publicaremos la versión actualizada en esta página y revisaremos la fecha de «Última actualización». Cuando los cambios sean sustanciales, proporcionaremos aviso adicional según exija la ley."
+      },
+      "contact": {
+        "title": "Contáctanos",
+        "body": "Para preguntas o solicitudes relacionadas con la privacidad, contáctanos a través de las opciones indicadas en flbusinesssearch.com. Responderemos de conformidad con la ley aplicable."
+      }
+    }
+  },
+  "terms": {
+    "title": "Términos del servicio | FLBusinessSearch",
+    "description": "Términos que rigen el uso de FLBusinessSearch, incluidas exclusiones sobre datos públicos de Sunbiz y limitaciones de responsabilidad.",
+    "heading": "Términos del servicio",
+    "breadcrumbHome": "Inicio",
+    "updated": "Última actualización: 23 de abril de 2026",
+    "intro": "Estos Términos del servicio («Términos») rigen tu acceso y uso de los sitios web, herramientas de búsqueda, alertas de leads y ofertas relacionadas de FLBusinessSearch (los «Servicios»). Al acceder o usar los Servicios, aceptas estos Términos. Si no estás de acuerdo, no uses los Servicios.",
+    "sections": {
+      "eligibility": {
+        "title": "Elegibilidad y cuentas",
+        "body": "Debes poder celebrar un contrato vinculante en tu jurisdicción para usar los Servicios. Eres responsable de mantener la confidencialidad de las credenciales de tu cuenta y de toda la actividad bajo tu cuenta. Notifícanos de inmediato cualquier uso no autorizado."
+      },
+      "license": {
+        "title": "Licencia para usar los Servicios",
+        "body": "Sujeto a estos Términos, te otorgamos una licencia limitada, no exclusiva, intransferible y revocable para acceder y usar los Servicios para fines personales o comerciales internos. No puedes copiar, extraer datos por scraping, realizar ingeniería inversa, eludir límites técnicos, revender el acceso ni usar los Servicios para crear una base de datos o producto competidor sin nuestro consentimiento previo por escrito."
+      },
+      "publicData": {
+        "title": "Registros públicos y exactitud",
+        "body": "Gran parte de la información mostrada a través de los Servicios proviene de registros públicos publicados por la División de Corporaciones de Florida (Sunbiz.org) y fuentes similares. FLBusinessSearch no está afiliado con Sunbiz.org ni con el Estado de Florida. Los registros públicos pueden estar incompletos, retrasarse o contener errores. Debes verificar la información crítica directamente con fuentes oficiales antes de confiar en ella para decisiones legales, financieras o de cumplimiento."
+      },
+      "noLegalAdvice": {
+        "title": "No es asesoramiento legal, fiscal ni profesional",
+        "body": "Los Servicios se ofrecen solo con fines informativos generales. Nada en los Servicios constituye asesoramiento legal, fiscal, contable o profesional. Consulta a profesionales cualificados para asesoramiento específico a tu situación."
+      },
+      "thirdParty": {
+        "title": "Enlaces y servicios de terceros",
+        "body": "Los Servicios pueden enlazar a sitios web, herramientas o proveedores de pago de terceros. No controlamos ni somos responsables del contenido, las políticas o las prácticas de terceros. El uso de servicios de terceros es bajo tu propio riesgo y sujeto a sus términos."
+      },
+      "acceptableUse": {
+        "title": "Uso aceptable",
+        "body": "Aceptas no hacer un uso indebido de los Servicios, incluido intentar obtener acceso no autorizado, introducir malware, acosar a otras personas, infringir la ley aplicable o interferir con la integridad o el rendimiento de los Servicios. Podemos suspender o terminar el acceso por infracciones."
+      },
+      "disclaimer": {
+        "title": "Exención de garantías",
+        "body": "LOS SERVICIOS SE PROPORCIONAN «TAL CUAL» Y «SEGÚN DISPONIBILIDAD» SIN GARANTÍAS DE NINGÚN TIPO, YA SEAN EXPRESAS, IMPLÍCITAS O LEGALES, INCLUIDAS LAS GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN PARTICULAR, TITULARIDAD Y NO INFRACCIÓN. NO GARANTIZAMOS QUE LOS SERVICIOS SERÁN ININTERRUMPIDOS, LIBRES DE ERRORES O LIBRES DE COMPONENTES DAÑINOS."
+      },
+      "limitation": {
+        "title": "Limitación de responsabilidad",
+        "body": "EN LA MEDIDA MÁXIMA PERMITIDA POR LA LEY, FLBUSINESSSEARCH Y SUS AFILIADAS, FUNCIONARIOS, DIRECTORES, EMPLEADOS Y PROVEEDORES NO SERÁN RESPONSABLES DE DAÑOS INDIRECTOS, INCIDENTALES, ESPECIALES, CONSECUENTES, EJEMPLARES O PUNITIVOS, NI DE PÉRDIDA DE BENEFICIOS, DATOS, FONDO DE COMERCIO U OPORTUNIDADES COMERCIALES, DERIVADOS DEL USO DE LOS SERVICIOS O RELACIONADOS CON ELLOS, INCLUSO SI SE LES ADVIRTIÓ DE LA POSIBILIDAD DE TALES DAÑOS. NUESTRA RESPONSABILIDAD AGREGADA POR CUALQUIER RECLAMACIÓN RELACIONADA CON LOS SERVICIOS NO EXCEDERÁ EL MAYOR ENTRE (A) LOS IMPORTES QUE NOS PAGASTE POR LOS SERVICIOS EN LOS DOCE MESES ANTERIORES A LA RECLAMACIÓN O (B) CIEN DÓLARES ESTADOUNIDENSES (100 USD), SALVO DONDE LO PROHIBA LA LEY."
+      },
+      "indemnity": {
+        "title": "Indemnización",
+        "body": "Defenderás, indemnizarás y mantendrás indemne a FLBusinessSearch y sus afiliadas frente a reclamaciones, responsabilidades, daños, pérdidas y gastos (incluidos honorarios razonables de abogados) derivados de tu uso de los Servicios, tu incumplimiento de estos Términos o la violación de derechos de un tercero."
+      },
+      "governingLaw": {
+        "title": "Ley aplicable y jurisdicción",
+        "body": "Estos Términos se rigen por las leyes del Estado de Florida, excluyendo sus normas sobre conflictos de leyes. Aceptas la jurisdicción y el fuero exclusivos de los tribunales estatales y federales ubicados en Florida para disputas derivadas de estos Términos o los Servicios, salvo que la ley aplicable exija lo contrario."
+      },
+      "changes": {
+        "title": "Cambios a estos Términos",
+        "body": "Podemos modificar estos Términos en cualquier momento publicando una versión actualizada en esta página y actualizando la fecha de «Última actualización». El uso continuado de los Servicios después de que los cambios surtan efecto constituye la aceptación de los Términos revisados. Si no estás de acuerdo, debes dejar de usar los Servicios."
+      },
+      "contact": {
+        "title": "Contacto",
+        "body": "Para preguntas sobre estos Términos, contáctanos a través de las opciones indicadas en flbusinesssearch.com."
+      }
+    }
   }
 }

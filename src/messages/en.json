@@ -115,5 +115,117 @@
     "notAffiliated": "Not affiliated with Sunbiz.org",
     "dataSource": "Data sourced from Florida Division of Corporations",
     "updatedDaily": "Updated daily"
+  },
+  "privacy": {
+    "title": "Privacy Policy | FLBusinessSearch",
+    "description": "How FLBusinessSearch collects, uses, and protects information when you use our Florida business search and related services.",
+    "heading": "Privacy Policy",
+    "breadcrumbHome": "Home",
+    "updated": "Last updated: April 23, 2026",
+    "intro": "FLBusinessSearch (“we,” “us,” or “our”) operates flbusinesssearch.com and related products. This Privacy Policy explains how we handle information when you use our websites, search tools, lead alerts, or other services (collectively, the “Services”). By using the Services, you agree to this policy.",
+    "sections": {
+      "informationWeCollect": {
+        "title": "Information we collect",
+        "body": "We may collect: (1) information you provide directly, such as email addresses or account details when you sign up for alerts, contact us, or purchase services; (2) usage and technical data, such as IP address, browser type, device identifiers, general location derived from IP, pages viewed, and referring URLs; and (3) business records and related metadata displayed in search results, which are sourced from public filings published by the Florida Division of Corporations (Sunbiz.org) and similar lawful public sources."
+      },
+      "howWeUse": {
+        "title": "How we use information",
+        "body": "We use information to operate, maintain, and improve the Services; personalize content; process transactions; send service-related communications; provide customer support; detect, prevent, and address fraud, abuse, or security issues; analyze usage trends; and comply with legal obligations. With your consent where required, we may send marketing messages, which you can opt out of at any time."
+      },
+      "sharing": {
+        "title": "Sharing and disclosure",
+        "body": "We may share information with vendors and service providers who assist us (for example, hosting, analytics, email delivery, or payment processing) subject to confidentiality obligations. We may disclose information if required by law, regulation, legal process, or governmental request, or to protect the rights, property, or safety of FLBusinessSearch, our users, or others. We do not sell your personal information as “sale” is defined under applicable U.S. state privacy laws, except as described in this policy or with your consent."
+      },
+      "cookies": {
+        "title": "Cookies and similar technologies",
+        "body": "We use cookies, local storage, pixels, and similar technologies to remember preferences, measure performance, and understand how the Services are used. You can control cookies through your browser settings; disabling cookies may limit certain features."
+      },
+      "retention": {
+        "title": "Retention",
+        "body": "We retain information for as long as needed to provide the Services, comply with law, resolve disputes, and enforce our agreements. Retention periods may vary depending on the type of data and the nature of our relationship with you."
+      },
+      "security": {
+        "title": "Security",
+        "body": "We implement reasonable administrative, technical, and organizational measures designed to protect information. No method of transmission or storage is completely secure; we cannot guarantee absolute security."
+      },
+      "rights": {
+        "title": "Your choices and rights",
+        "body": "Depending on where you live, you may have rights to access, correct, delete, or restrict processing of your personal information, or to object to certain processing. You may also have the right to appeal our responses. To exercise these rights, contact us using the information below. Residents of certain U.S. states may designate an authorized agent as permitted by law."
+      },
+      "children": {
+        "title": "Children’s privacy",
+        "body": "The Services are not directed to children under 13, and we do not knowingly collect personal information from children under 13. If you believe we have collected such information, contact us and we will take appropriate steps to delete it."
+      },
+      "international": {
+        "title": "International users",
+        "body": "If you access the Services from outside the United States, you understand that your information may be processed in the United States or other countries where we or our vendors operate, which may have different data protection laws than your jurisdiction."
+      },
+      "changes": {
+        "title": "Changes to this policy",
+        "body": "We may update this Privacy Policy from time to time. We will post the updated version on this page and revise the “Last updated” date. Where changes are material, we will provide additional notice as required by law."
+      },
+      "contact": {
+        "title": "Contact us",
+        "body": "For privacy-related questions or requests, contact us through the contact options listed on flbusinesssearch.com. We will respond consistent with applicable law."
+      }
+    }
+  },
+  "terms": {
+    "title": "Terms of Service | FLBusinessSearch",
+    "description": "Terms governing your use of FLBusinessSearch, including disclaimers about public Sunbiz data and limitations of liability.",
+    "heading": "Terms of Service",
+    "breadcrumbHome": "Home",
+    "updated": "Last updated: April 23, 2026",
+    "intro": "These Terms of Service (“Terms”) govern your access to and use of FLBusinessSearch’s websites, search tools, lead alerts, and related offerings (the “Services”). By accessing or using the Services, you agree to these Terms. If you do not agree, do not use the Services.",
+    "sections": {
+      "eligibility": {
+        "title": "Eligibility and accounts",
+        "body": "You must be able to form a binding contract in your jurisdiction to use the Services. You are responsible for maintaining the confidentiality of your account credentials and for all activity under your account. Notify us promptly of any unauthorized use."
+      },
+      "license": {
+        "title": "License to use the Services",
+        "body": "Subject to these Terms, we grant you a limited, non-exclusive, non-transferable, revocable license to access and use the Services for your personal or internal business purposes. You may not copy, scrape, reverse engineer, circumvent technical limits, resell access, or use the Services to build a competing database or product without our prior written consent."
+      },
+      "publicData": {
+        "title": "Public records and accuracy",
+        "body": "Much of the information shown through the Services is derived from public records published by the Florida Division of Corporations (Sunbiz.org) and similar sources. FLBusinessSearch is not affiliated with Sunbiz.org or the State of Florida. Public records may be incomplete, delayed, or contain errors. You should verify critical information directly with official sources before relying on it for legal, financial, or compliance decisions."
+      },
+      "noLegalAdvice": {
+        "title": "No legal, tax, or professional advice",
+        "body": "The Services are provided for general informational purposes only. Nothing on the Services constitutes legal, tax, accounting, or professional advice. Consult qualified professionals for advice specific to your situation."
+      },
+      "thirdParty": {
+        "title": "Third-party links and services",
+        "body": "The Services may link to third-party websites, tools, or payment providers. We do not control and are not responsible for third-party content, policies, or practices. Your use of third-party services is at your own risk and subject to their terms."
+      },
+      "acceptableUse": {
+        "title": "Acceptable use",
+        "body": "You agree not to misuse the Services, including by attempting to gain unauthorized access, introducing malware, harassing others, violating applicable law, or interfering with the integrity or performance of the Services. We may suspend or terminate access for violations."
+      },
+      "disclaimer": {
+        "title": "Disclaimer of warranties",
+        "body": "THE SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE” WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF HARMFUL COMPONENTS."
+      },
+      "limitation": {
+        "title": "Limitation of liability",
+        "body": "TO THE MAXIMUM EXTENT PERMITTED BY LAW, FLBUSINESSSEARCH AND ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AND SUPPLIERS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS OPPORTUNITIES, ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. OUR AGGREGATE LIABILITY FOR ANY CLAIM ARISING OUT OF OR RELATING TO THE SERVICES WILL NOT EXCEED THE GREATER OF (A) THE AMOUNTS YOU PAID US FOR THE SERVICES IN THE TWELVE MONTHS BEFORE THE CLAIM OR (B) ONE HUNDRED U.S. DOLLARS (US$100), EXCEPT WHERE PROHIBITED BY LAW."
+      },
+      "indemnity": {
+        "title": "Indemnity",
+        "body": "You will defend, indemnify, and hold harmless FLBusinessSearch and its affiliates from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys’ fees) arising out of your use of the Services, your violation of these Terms, or your violation of any rights of a third party."
+      },
+      "governingLaw": {
+        "title": "Governing law and venue",
+        "body": "These Terms are governed by the laws of the State of Florida, excluding its conflict-of-law rules. You agree to the exclusive jurisdiction and venue of the state and federal courts located in Florida for disputes arising out of or relating to these Terms or the Services, subject to applicable law requiring otherwise."
+      },
+      "changes": {
+        "title": "Changes to these Terms",
+        "body": "We may modify these Terms at any time by posting an updated version on this page and updating the “Last updated” date. Your continued use of the Services after changes become effective constitutes acceptance of the revised Terms. If you do not agree, you must stop using the Services."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "For questions about these Terms, contact us through the contact options listed on flbusinesssearch.com."
+      }
+    }
   }
 }
