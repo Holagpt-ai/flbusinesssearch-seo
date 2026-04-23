@@ -99,7 +99,7 @@ export default async function BusinessProfilePage({
     .from("businesses")
     .select("*")
     .eq("slug", params.slug)
-    .single();
+    .maybeSingle();
 
   if (!businessData) notFound();
 
@@ -136,6 +136,14 @@ export default async function BusinessProfilePage({
     .order("updated_at", { ascending: false })
     .limit(4);
 
+  const schemaType = (() => {
+    const et = (business.entity_type ?? "").toLowerCase();
+    if (et.includes("corp") || et.includes("inc")) return "Corporation";
+    if (et.includes("llc") || et.includes("limited liability")) return "LimitedLiabilityCompany";
+    if (et.includes("non profit") || et.includes("nonprofit")) return "NGO";
+    return "Organization";
+  })();
+
   return (
     <div className="min-h-screen bg-cream">
       <header className="border-b border-[#E8E4DC] bg-white px-6 py-4">
@@ -160,12 +168,16 @@ export default async function BusinessProfilePage({
           <span>›</span>
           {business.county && (
             <>
-              <Link
-                href={countyPath(business.county_slug)}
-                className="hover:text-[#1A1A1A]"
-              >
-                {business.county}
-              </Link>
+              {business.county_slug ? (
+                <Link
+                  href={countyPath(business.county_slug)}
+                  className="hover:text-[#1A1A1A]"
+                >
+                  {business.county}
+                </Link>
+              ) : (
+                <span className="text-[#1A1A1A]">{business.county}</span>
+              )}
               <span>›</span>
             </>
           )}
@@ -363,7 +375,7 @@ export default async function BusinessProfilePage({
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
+            "@type": schemaType,
             name: business.name,
             address: {
               "@type": "PostalAddress",
