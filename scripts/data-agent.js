@@ -10,7 +10,7 @@ const SftpClient = require("ssh2-sftp-client");
 const AdmZip = require("adm-zip");
 const { createClient } = require("@supabase/supabase-js");
 
-const DAILY_ZIP_PATH = "/Public/doc/cor/cordata.zip";
+const DAILY_FILE_DIR = "/Public/doc/cor";
 const QUARTERLY_ZIP_PATH = "/Public/doc/Quarterly/Cor/cordata.zip";
 const RECORD_LENGTH = 1440;
 const BATCH_SIZE = 500;
@@ -170,8 +170,13 @@ function countyFromCity(cityRaw) {
   return COUNTY_LOOKUP[city] ?? null;
 }
 
-function pickSftpZipPath(mode) {
-  return mode === "quarterly" ? QUARTERLY_ZIP_PATH : DAILY_ZIP_PATH;
+function pickSftpPath(mode) {
+  if (mode === "quarterly") return QUARTERLY_ZIP_PATH;
+  const now = new Date();
+  const yyyy = now.getUTCFullYear();
+  const mm = String(now.getUTCMonth() + 1).padStart(2, "0");
+  const dd = String(now.getUTCDate()).padStart(2, "0");
+  return `${DAILY_FILE_DIR}/${yyyy}${mm}${dd}c.txt`;
 }
 
 function makeTempDir() {
@@ -406,7 +411,7 @@ async function main() {
       });
     } else {
       const sftp = new SftpClient();
-      const remoteZip = pickSftpZipPath(mode);
+      const remoteFile = pickSftpPath(mode);
 
       try {
         await sftp.connect({
@@ -414,7 +419,12 @@ async function main() {
           username: sftpUsername,
           password: sftpPassword,
         });
-        await sftp.fastGet(remoteZip, zipLocalPath);
+        if (mode === "quarterly") {
+          await sftp.fastGet(remoteFile, zipLocalPath);
+        } else {
+          const dailyLocalPath = path.join(tempDir, "daily.txt");
+          await sftp.fastGet(remoteFile, dailyLocalPath);
+        }
       } finally {
         try {
           await sftp.end();
@@ -423,11 +433,19 @@ async function main() {
         }
       }
 
-      const extractedFile = extractFirstDataFile(zipLocalPath, tempDir);
-      rl = readline.createInterface({
-        input: fs.createReadStream(extractedFile, { encoding: "utf8" }),
-        crlfDelay: Infinity,
-      });
+      if (mode === "quarterly") {
+        const extractedFile = extractFirstDataFile(zipLocalPath, tempDir);
+        rl = readline.createInterface({
+          input: fs.createReadStream(extractedFile, { encoding: "utf8" }),
+          crlfDelay: Infinity,
+        });
+      } else {
+        const dailyLocalPath = path.join(tempDir, "daily.txt");
+        rl = readline.createInterface({
+          input: fs.createReadStream(dailyLocalPath, { encoding: "utf8" }),
+          crlfDelay: Infinity,
+        });
+      }
     }
 
     let batch = [];
