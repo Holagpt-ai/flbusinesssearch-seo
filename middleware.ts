@@ -38,6 +38,11 @@ export default function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
+  const pathname = request.nextUrl.pathname;
+  if (pathname === "/privacy" || pathname === "/terms") {
+    return NextResponse.rewrite(new URL(`/en${pathname}`, request.url));
+  }
+
   return intlMiddleware(request);
 }
 
