@@ -1,10 +1,10 @@
-import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2";
 import {
   getKnowledge,
   logAgentRun,
   sendFailureAlert,
   setKnowledge,
-} from "../_shared/base";
+} from "../_shared/base.ts";
 
 declare const Deno: {
   env: { get(key: string): string | undefined };
