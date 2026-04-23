@@ -1,11 +1,46 @@
 import createMiddleware from "next-intl/middleware";
+import { NextRequest, NextResponse } from "next/server";
 
-export default createMiddleware({
+const intlMiddleware = createMiddleware({
   locales: ["en", "es"],
   defaultLocale: "en",
   localePrefix: "as-needed",
 });
 
+export default function middleware(request: NextRequest) {
+  // Admin Basic Auth guard
+  if (request.nextUrl.pathname.startsWith("/admin")) {
+    const authHeader = request.headers.get("authorization");
+    const adminPassword = process.env.ADMIN_PASSWORD;
+
+    if (!adminPassword) {
+      return new Response("ADMIN_PASSWORD env var not set", { status: 500 });
+    }
+
+    if (!authHeader || !authHeader.startsWith("Basic ")) {
+      return new Response("Unauthorized", {
+        status: 401,
+        headers: { "WWW-Authenticate": 'Basic realm="FLBusinessSearch Admin"' },
+      });
+    }
+
+    const base64 = authHeader.slice("Basic ".length);
+    const decoded = Buffer.from(base64, "base64").toString("utf-8");
+    const [, password] = decoded.split(":");
+
+    if (password !== adminPassword) {
+      return new Response("Unauthorized", {
+        status: 401,
+        headers: { "WWW-Authenticate": 'Basic realm="FLBusinessSearch Admin"' },
+      });
+    }
+
+    return NextResponse.next();
+  }
+
+  return intlMiddleware(request);
+}
+
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/admin/:path*", "/((?!api|_next|_vercel|.*\\..*).*)"],
 };

@@ -44,6 +44,9 @@ export interface BusinessRecord {
   website_detected: boolean | null;
   hot_lead: boolean | null;
   lead_quality: string | null;
+  sunbiz_document_number: string | null;
+  enrichment_status: string | null;
+  annual_report_risk: string | null;
 }
 
 export type AgentTier = "hot" | "warm" | "basic";

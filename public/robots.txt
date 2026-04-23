@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Block internal/utility paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /dashboard/
+
+# Sitemaps
+Sitemap: https://flbusinesssearch.com/sitemap.xml
+Sitemap: https://flbusinesssearch.com/sitemap-index

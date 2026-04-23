@@ -19,6 +19,9 @@ export interface Business {
   hot_lead: boolean | null;
   lead_quality: string | null;
   last_enriched_at: string | null;
+  sunbiz_document_number: string | null;
+  enrichment_status: string | null;
+  annual_report_risk: string | null;
   updated_at: string | null;
   created_at: string | null;
 }
