@@ -114,7 +114,7 @@ Deno.serve(async (req: Request) => {
     const { data: businesses, error } = await supabase
       .from("businesses")
       .select("id, slug")
-      .eq("enrichment_status", "enriched")
+      .eq("enrichment_status", "complete")
       .is("indexed_at", null)
       .not("slug", "is", null)
       .order("created_at", { ascending: true })
