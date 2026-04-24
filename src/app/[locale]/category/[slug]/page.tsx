@@ -87,11 +87,20 @@ export async function generateMetadata({
   return {
     title,
     description,
+    robots: { index: true, follow: true },
     openGraph: {
       title,
       description,
       url: canonical,
       type: "website",
+      images: [{ url: "https://flbusinesssearch.com/og-image.png", width: 1200, height: 630 }],
+      siteName: "FLBusinessSearch",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["https://flbusinesssearch.com/og-image.png"],
     },
     alternates: {
       canonical,
