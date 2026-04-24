@@ -378,6 +378,22 @@ export default async function CategoryPage({
       <footer className="mt-16 bg-[#1A1A1A] px-6 py-8">
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-xs text-[#6B6B6B]">{t("footerCopy")}</p>
+          <div className="mt-3 flex justify-center gap-4">
+            <a href="/privacy" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
+              Terms of Service
+            </a>
+            <a
+              href="https://dos.fl.gov/sunbiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-[#6B6B6B] transition-colors hover:text-white"
+            >
+              Data: Florida DOS
+            </a>
+          </div>
         </div>
       </footer>
 
@@ -390,6 +406,7 @@ export default async function CategoryPage({
             name: `${categoryName} Businesses in Florida`,
             description: `Browse registered ${categoryName.toLowerCase()} businesses across Florida. Updated daily from Sunbiz.org.`,
             url: `https://flbusinesssearch.com/category/${params.slug}`,
+            dateModified: new Date().toISOString().split("T")[0],
             breadcrumb: {
               "@type": "BreadcrumbList",
               itemListElement: [

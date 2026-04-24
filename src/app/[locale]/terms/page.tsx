@@ -56,6 +56,7 @@ export default async function TermsPage({
   setRequestLocale(params.locale);
   const t = await getTranslations({ locale: params.locale, namespace: "terms" });
   const tNav = await getTranslations({ locale: params.locale, namespace: "nav" });
+  const tFooter = await getTranslations({ locale: params.locale, namespace: "county" });
   const isEs = params.locale === "es";
   const searchPath = isEs ? "/es/buscar" : "/search";
   const sections = t.raw("sections") as Record<
@@ -103,6 +104,28 @@ export default async function TermsPage({
           ))}
         </div>
       </main>
+
+      <footer className="mt-16 bg-[#1A1A1A] px-6 py-8">
+        <div className="mx-auto max-w-5xl text-center">
+          <p className="text-xs text-[#6B6B6B]">{tFooter("footerCopy")}</p>
+          <div className="mt-3 flex justify-center gap-4">
+            <a href="/privacy" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
+              Terms of Service
+            </a>
+            <a
+              href="https://dos.fl.gov/sunbiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-[#6B6B6B] transition-colors hover:text-white"
+            >
+              Data: Florida DOS
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

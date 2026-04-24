@@ -84,12 +84,14 @@ export default async function BusinessProfilePage({
   const supabase = createServerClient();
   const tBusiness = await getTranslations({ locale: params.locale, namespace: "business" });
   const tCommon = await getTranslations({ locale: params.locale, namespace: "common" });
+  const tFooter = await getTranslations({ locale: params.locale, namespace: "county" });
   const t = tBusiness;
   const isEs = params.locale === "es";
 
   const searchPath = isEs ? "/es/buscar" : "/search";
   const profilePath = (slug: string) =>
     isEs ? `/es/negocio/${slug}` : `/business/${slug}`;
+  const currentProfilePath = isEs ? `/es/negocio/${params.slug}` : `/business/${params.slug}`;
   const countyPath = (countySlug: string | null) =>
     countySlug ? `/county/${countySlug}` : "/search";
   const similarSearchPath = (countySlug: string | null) =>
@@ -355,7 +357,14 @@ export default async function BusinessProfilePage({
 
         <div className="border-t border-[#E8E4DC] pt-6 text-xs text-[#9B9B9B]">
           <p>
-            {tBusiness("dataSource")}
+            <a
+              href="https://dos.fl.gov/sunbiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#9B9B9B] transition-colors hover:text-[#1A1A1A] hover:underline"
+            >
+              {tBusiness("dataSource")}
+            </a>
             {lastVerified ? ` · ${tBusiness("lastVerified", { date: lastVerified })}` : ""}
           </p>
           <p className="mt-1">
@@ -366,7 +375,23 @@ export default async function BusinessProfilePage({
 
       <footer className="mt-16 bg-[#1A1A1A] px-6 py-8">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="text-xs text-[#6B6B6B]">{tBusiness("dataSource")}</p>
+          <p className="text-xs text-[#6B6B6B]">{tFooter("footerCopy")}</p>
+          <div className="mt-3 flex justify-center gap-4">
+            <a href="/privacy" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
+              Privacy Policy
+            </a>
+            <a href="/terms" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
+              Terms of Service
+            </a>
+            <a
+              href="https://dos.fl.gov/sunbiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-[#6B6B6B] transition-colors hover:text-white"
+            >
+              Data: Florida DOS
+            </a>
+          </div>
         </div>
       </footer>
 
@@ -390,6 +415,42 @@ export default async function BusinessProfilePage({
             } registered in ${business.county || "Florida"}, Florida. Filing date: ${
               filingDate || "N/A"
             }. Status: ${business.status || "N/A"}.`,
+            dateModified: new Date().toISOString().split("T")[0],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Florida Businesses",
+                item: "https://flbusinesssearch.com",
+              },
+              ...(business.county
+                ? [
+                    {
+                      "@type": "ListItem",
+                      position: 2,
+                      name: `${business.county} County`,
+                      item: `https://flbusinesssearch.com/county/${
+                        business.county_slug || business.county?.toLowerCase().replace(/\s+/g, "-")
+                      }`,
+                    },
+                  ]
+                : []),
+              {
+                "@type": "ListItem",
+                position: business.county ? 3 : 2,
+                name: business.name,
+                item: `https://flbusinesssearch.com${currentProfilePath}`,
+              },
+            ],
           }),
         }}
       />
