@@ -303,6 +303,17 @@ function parseRecordLine(line) {
 
 function passesFilters(rec) {
   if (!rec) return false;
+  if (rec.status !== "Active") return false;
+  if (rec.principal_state !== "FL") return false;
+  const year = parseInt(rec.filing_date?.slice(0, 4) ?? "0", 10);
+  if (!Number.isFinite(year) || year < 2020) return false;
+  const allowed = new Set([
+    "LLC",
+    "Non-Profit Corporation",
+    "For-Profit Corporation",
+    "Professional Association",
+  ]);
+  if (!allowed.has(rec.entity_type)) return false;
   if (!rec.sunbiz_document_number) return false;
   if (!rec.slug) return false;
   return true;
@@ -583,4 +594,3 @@ main().catch((e) => {
   console.error("data-agent uncaught error", e);
   process.exitCode = 1;
 });
-

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { createServerClient } from "@/lib/supabase";
+import { Footer } from "@/components/Footer";
 
 const CATEGORY_SLUGS = [
   "construction",
@@ -384,27 +385,7 @@ export default async function CategoryPage({
         </div>
       </main>
 
-      <footer className="mt-16 bg-[#1A1A1A] px-6 py-8">
-        <div className="mx-auto max-w-5xl text-center">
-          <p className="text-xs text-[#6B6B6B]">{t("footerCopy")}</p>
-          <div className="mt-3 flex justify-center gap-4">
-            <a href="/privacy" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="text-xs text-[#6B6B6B] transition-colors hover:text-white">
-              Terms of Service
-            </a>
-            <a
-              href="https://dos.fl.gov/sunbiz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs text-[#6B6B6B] transition-colors hover:text-white"
-            >
-              Data: Florida DOS
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer footerCopy={t("footerCopy")} />
 
       <script
         type="application/ld+json"
