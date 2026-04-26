@@ -201,22 +201,48 @@ function extractFirstDataFile(zipPath, outDir) {
 
 function parseRecordLine(line) {
   const raw = String(line ?? "");
-  if (raw.length < 480) {
-    console.warn(`parseRecordLine: line length ${raw.length} is less than 480; skipping`);
-    return null;
-  }
+  if (raw.length < 1440) return null;
 
   const document_number = safeTrim(raw.slice(0, 12));
   const name = safeTrim(raw.slice(12, 204));
   const status_flag = raw.charAt(204) || "";
-  const entity_type_code = raw.slice(207, 209);
-  const street_address = safeTrim(raw.slice(220, 300));
-  const city = safeTrim(raw.slice(300, 332));
+  const entity_type_code = safeTrim(raw.slice(207, 209));
+  const street_address = safeTrim(raw.slice(220, 262));
+  const city = safeTrim(raw.slice(304, 332));
   const state = safeTrim(raw.slice(332, 334));
-  const zip = safeTrim(raw.slice(334, 339));
+  const zip = safeTrim(raw.slice(334, 344));
+  const mailing_street = safeTrim(raw.slice(346, 388));
+  const mailing_city = safeTrim(raw.slice(430, 458));
+  const mailing_state = safeTrim(raw.slice(458, 460));
+  const mailing_zip = safeTrim(raw.slice(460, 470));
   const filing_date_raw = safeTrim(raw.slice(472, 480));
 
   if (!document_number || !name) return null;
+
+  const fei_ein = safeTrim(raw.slice(480, 494));
+  const state_of_formation = safeTrim(raw.slice(495, 497));
+  const last_event_date = safeTrim(raw.slice(497, 505));
+  const agent_name = safeTrim(raw.slice(544, 586));
+  const agent_street = safeTrim(raw.slice(587, 629));
+  const agent_city = safeTrim(raw.slice(629, 657));
+  const agent_state = safeTrim(raw.slice(657, 659));
+  const agent_zip = safeTrim(raw.slice(659, 668));
+
+  const officers = [];
+  for (let i = 0; i < 6; i++) {
+    const offset = 668 + (i * 128);
+    const off_name = safeTrim(raw.slice(offset + 5, offset + 47));
+    if (off_name) {
+      officers.push({
+        title: safeTrim(raw.slice(offset, offset + 4)) || null,
+        name: off_name,
+        street: safeTrim(raw.slice(offset + 47, offset + 89)) || null,
+        city: safeTrim(raw.slice(offset + 89, offset + 117)) || null,
+        state: safeTrim(raw.slice(offset + 117, offset + 119)) || null,
+        zip: safeTrim(raw.slice(offset + 119, offset + 128)) || null,
+      });
+    }
+  }
 
   let status;
   if (status_flag === "I") status = "Active";
@@ -256,27 +282,27 @@ function parseRecordLine(line) {
     city,
     state,
     zip,
+    mailing_street: mailing_street || null,
+    mailing_city: mailing_city || null,
+    mailing_state: mailing_state || null,
+    mailing_zip: mailing_zip || null,
+    fei_ein: fei_ein || null,
+    state_of_formation: state_of_formation || null,
+    last_event_date: last_event_date || null,
+    registered_agent_name: agent_name || null,
+    registered_agent_street: agent_street || null,
+    registered_agent_city: agent_city || null,
+    registered_agent_state: agent_state || null,
+    registered_agent_zip: agent_zip || null,
+    officers: officers.length > 0 ? officers : null,
     county,
     county_slug,
-    owner_name: null,
-    registered_agent: null,
     principal_state: state,
   };
 }
 
 function passesFilters(rec) {
   if (!rec) return false;
-  if (rec.status !== "Active") return false;
-  if (rec.principal_state !== "FL") return false;
-  const year = parseInt(rec.filing_date?.slice(0, 4) ?? "0", 10);
-  if (!Number.isFinite(year) || year < 2020) return false;
-  const allowed = new Set([
-    "LLC",
-    "Non-Profit Corporation",
-    "For-Profit Corporation",
-    "Professional Association",
-  ]);
-  if (!allowed.has(rec.entity_type)) return false;
   if (!rec.sunbiz_document_number) return false;
   if (!rec.slug) return false;
   return true;
@@ -329,8 +355,19 @@ async function upsertBatch(supabase, batch) {
     entity_type: r.entity_type,
     county: r.county,
     county_slug: r.county_slug,
-    owner_name: r.owner_name,
-    registered_agent: r.registered_agent,
+    mailing_street: r.mailing_street,
+    mailing_city: r.mailing_city,
+    mailing_state: r.mailing_state,
+    mailing_zip: r.mailing_zip,
+    fei_ein: r.fei_ein,
+    state_of_formation: r.state_of_formation,
+    last_event_date: r.last_event_date,
+    registered_agent_name: r.registered_agent_name,
+    registered_agent_street: r.registered_agent_street,
+    registered_agent_city: r.registered_agent_city,
+    registered_agent_state: r.registered_agent_state,
+    registered_agent_zip: r.registered_agent_zip,
+    officers: r.officers,
     updated_at: nowIso,
   }));
 
