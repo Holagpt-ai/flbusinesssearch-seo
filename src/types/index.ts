@@ -11,6 +11,26 @@ export interface Business {
   owner_name: string | null;
   owner_address: string | null;
   registered_agent: string | null;
+  registered_agent_name: string | null;
+  registered_agent_street: string | null;
+  registered_agent_city: string | null;
+  registered_agent_state: string | null;
+  registered_agent_zip: string | null;
+  officers: {
+    title: string | null;
+    name: string | null;
+    street: string | null;
+    city: string | null;
+    state: string | null;
+    zip: string | null;
+  }[] | null;
+  fei_ein: string | null;
+  state_of_formation: string | null;
+  last_event_date: string | null;
+  mailing_street: string | null;
+  mailing_city: string | null;
+  mailing_state: string | null;
+  mailing_zip: string | null;
   category: string | null;
   category_slug: string | null;
   website_url: string | null;
