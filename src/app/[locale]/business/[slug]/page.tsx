@@ -115,7 +115,10 @@ export default async function BusinessProfilePage({
 
   if (!businessData) notFound();
 
-  const business = businessData as Business;
+  const business = businessData as Business & {
+    registered_agent_name: string | null;
+    officers?: { name: string | null }[] | null;
+  };
 
   const isHotLead = business.hot_lead === true;
   const isActive = business.status === "Active";
@@ -242,8 +245,8 @@ export default async function BusinessProfilePage({
                 label: t("fieldCounty"),
                 value: business.county ? `${business.county}, Florida` : null,
               },
-              { label: t("fieldOwner"), value: business.owner_name },
-              { label: t("fieldRegisteredAgent"), value: business.registered_agent },
+              { label: t("fieldOwner"), value: business.officers?.[0]?.name ?? null },
+              { label: t("fieldRegisteredAgent"), value: business.registered_agent_name },
               { label: t("fieldOwnerAddress"), value: business.owner_address },
             ].map((field) => (
               <div
@@ -399,7 +402,9 @@ export default async function BusinessProfilePage({
               addressCountry: "US",
             },
             ...(business.website_url ? { url: business.website_url } : {}),
-            ...(business.owner_name ? { founder: business.owner_name } : {}),
+            ...(business.officers?.[0]?.name ?? null
+              ? { founder: business.officers?.[0]?.name ?? null }
+              : {}),
             description: `${
               business.entity_type || "Business"
             } registered in ${business.county || "Florida"}, Florida. Filing date: ${
