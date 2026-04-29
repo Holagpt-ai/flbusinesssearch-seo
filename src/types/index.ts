@@ -57,7 +57,11 @@ export interface County {
 export interface Category {
   id: string;
   name: string;
+  name_es: string | null;
   slug: string;
+  slug_es: string | null;
+  description_en: string | null;
+  description_es: string | null;
   business_count: number | null;
   created_at: string | null;
 }
