@@ -6,17 +6,31 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { createServerClient } from "@/lib/supabase";
 import { Footer } from "@/components/Footer";
 
+// Canonical 20-category slug list — must stay in sync with:
+//   enrichment-agent/index.ts (classifyCategory)
+//   supabase/migrations/20260428000001_categories_20_canonical.sql
+//   src/app/sitemap-categories/route.ts (FALLBACK_SLUGS)
 const CATEGORY_SLUGS = [
-  "construction",
-  "insurance",
-  "retail",
-  "food-beverage",
-  "professional-services",
-  "technology",
+  "legal-services",
   "healthcare",
+  "insurance",
   "real-estate",
+  "construction",
+  "landscaping",
+  "home-services",
+  "automotive",
   "transportation",
-  "other",
+  "food-beverage",
+  "cleaning-services",
+  "beauty-wellness",
+  "technology",
+  "marketing-advertising",
+  "accounting-finance",
+  "education",
+  "retail",
+  "professional-services",
+  "nonprofit-religious",
+  "general-business",
 ];
 
 const formatCategoryNameFromSlug = (slug: string) =>
@@ -73,8 +87,11 @@ export async function generateMetadata({
     businessCount = count ?? null;
   }
 
-  if (!categoryName || (businessCount ?? 0) === 0) {
-    return { title: "Category Not Found | FLBusinessSearch" };
+  if (!categoryName || (businessCount ?? 0) < 5) {
+    return {
+      title: "Category Not Found | FLBusinessSearch",
+      robots: { index: false, follow: false },
+    };
   }
 
   const isEs = params.locale === "es";
@@ -158,7 +175,7 @@ export default async function CategoryPage({
     businessCount = count ?? null;
   }
 
-  if (!categoryName || (businessCount ?? 0) === 0) notFound();
+  if (!categoryName || (businessCount ?? 0) < 5) notFound();
 
   const { data: hotLeads } = await supabase
     .from("businesses")
@@ -422,3 +439,4 @@ export default async function CategoryPage({
 }
 
 export const revalidate = 86400;
+
