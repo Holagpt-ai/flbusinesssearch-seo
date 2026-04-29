@@ -220,8 +220,17 @@ function parseRecordLine(line) {
   if (!document_number || !name) return null;
 
   const fei_ein = safeTrim(raw.slice(480, 494));
-  const state_of_formation = safeTrim(raw.slice(495, 497));
-  const last_event_date = safeTrim(raw.slice(497, 505));
+  const state_of_formation_raw = safeTrim(raw.slice(495, 497));
+  const state_of_formation = (state_of_formation_raw && /^[A-Z]{2}$/.test(state_of_formation_raw)) ? state_of_formation_raw : null;
+
+  const last_event_date_raw = safeTrim(raw.slice(497, 505));
+  let last_event_date = null;
+  if (last_event_date_raw && last_event_date_raw.length === 8 && /^\d{8}$/.test(last_event_date_raw)) {
+    const mm = last_event_date_raw.slice(0, 2);
+    const dd = last_event_date_raw.slice(2, 4);
+    const yyyy = last_event_date_raw.slice(4, 8);
+    last_event_date = `${yyyy}-${mm}-${dd}`;
+  }
   const agent_name = safeTrim(raw.slice(544, 586));
   const agent_street = safeTrim(raw.slice(587, 629));
   const agent_city = safeTrim(raw.slice(629, 657));
@@ -305,7 +314,15 @@ function passesFilters(rec) {
   if (!rec) return false;
   if (rec.status !== "Active") return false;
   if (rec.principal_state !== "FL") return false;
-  const year = parseInt(rec.filing_date?.slice(0, 4) ?? "0", 10);
+  let filingDateValue = "";
+  if (typeof rec.filing_date === "string") {
+    filingDateValue = rec.filing_date;
+  } else if (rec.filing_date instanceof Date && !Number.isNaN(rec.filing_date.getTime())) {
+    filingDateValue = rec.filing_date.toISOString();
+  } else if (typeof rec.filing_date === "number" && Number.isFinite(rec.filing_date)) {
+    filingDateValue = String(rec.filing_date);
+  }
+  const year = parseInt(filingDateValue.slice(0, 4), 10);
   if (!Number.isFinite(year) || year < 2020) return false;
   const allowed = new Set([
     "LLC",

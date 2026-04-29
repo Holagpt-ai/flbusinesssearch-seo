@@ -36,6 +36,14 @@ export function Footer({ footerCopy }: FooterProps) {
             Sitemap
           </a>
           <a
+            href="https://dos.fl.gov/sunbiz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-[rgba(255,255,255,0.30)] transition-colors duration-150 hover:text-[rgba(255,255,255,0.70)]"
+          >
+            Data: Florida DOS
+          </a>
+          <a
             href="https://www.linkedin.com/in/flbusinesssearch"
             target="_blank"
             rel="noopener noreferrer"
