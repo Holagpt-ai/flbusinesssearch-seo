@@ -3,19 +3,31 @@ import { createServerClient } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
 
-// Hardcoded fallback — matches the 10 categories in the DB
-// If the DB call fails, GSC always gets valid URLs instead of an empty urlset
+// Canonical 20-category slug list — must stay in sync with:
+//   enrichment-agent/index.ts (classifyCategory)
+//   supabase/migrations/20260428000001_categories_20_canonical.sql
+//   src/app/[locale]/category/[slug]/page.tsx (CATEGORY_SLUGS)
 const FALLBACK_SLUGS = [
-  'construction',
-  'landscaping',
-  'cleaning-services',
-  'restaurants-and-food',
-  'web-design-and-marketing',
-  'insurance',
-  'accounting-and-bookkeeping',
-  'home-services',
-  'retail',
-  'professional-services',
+  "legal-services",
+  "healthcare",
+  "insurance",
+  "real-estate",
+  "construction",
+  "landscaping",
+  "home-services",
+  "automotive",
+  "transportation",
+  "food-beverage",
+  "cleaning-services",
+  "beauty-wellness",
+  "technology",
+  "marketing-advertising",
+  "accounting-finance",
+  "education",
+  "retail",
+  "professional-services",
+  "nonprofit-religious",
+  "general-business",
 ];
 
 export async function GET() {
