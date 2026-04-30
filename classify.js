@@ -46,7 +46,7 @@ async function run() {
 
     console.log(`Processing batch at offset ${offset}: ${data.length} rows...`);
 
-    const updates = data.map(row => {
+    const updates = data.filter(row => row.name && row.name.trim()).map(row => {
       const [category, category_slug] = classify(row.name);
       return { id: row.id, category, category_slug, enrichment_status: 'website_pending' };
     });
