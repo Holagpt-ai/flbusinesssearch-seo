@@ -43,6 +43,13 @@ export default function middleware(request: NextRequest) {
     return NextResponse.rewrite(new URL(`/en${pathname}`, request.url));
   }
 
+  // Spanish search path: /es/buscar → /es/search
+  if (pathname === "/es/buscar") {
+    const url = request.nextUrl.clone();
+    url.pathname = "/es/search";
+    return NextResponse.rewrite(url);
+  }
+
   return intlMiddleware(request);
 }
 
