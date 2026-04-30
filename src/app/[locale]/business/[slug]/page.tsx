@@ -7,11 +7,8 @@ import { createServerClient } from "@/lib/supabase";
 import { Footer } from "@/components/Footer";
 import type { Business } from "@/types";
 
-// Generate static params for top businesses.
-// In production this can be expanded to all known slugs.
-// For now generate the first 1000 most recently updated.
 // App Router equivalent to fallback: "blocking"
-// Known paths are statically generated, unknown slugs render on demand.
+// All business profile pages render on demand (SSR) and are cached via revalidate.
 export const dynamicParams = true;
 
 // Enable ISR — revalidate every 24 hours.
