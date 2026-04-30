@@ -51,7 +51,10 @@ async function run() {
       return { id: row.id, category, category_slug, enrichment_status: 'website_pending' };
     });
 
-    const { error: upErr } = await supabase.from('businesses').upsert(updates, { onConflict: 'id' });
+    for (const u of updates) {
+      await supabase.from('businesses').update({ category: u.category, category_slug: u.category_slug, enrichment_status: u.enrichment_status }).eq('id', u.id);
+    }
+    const upErr = null;
     if (upErr) { console.error('Update error:', upErr.message); break; }
 
     totalUpdated += data.length;
