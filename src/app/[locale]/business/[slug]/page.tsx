@@ -10,19 +10,6 @@ import type { Business } from "@/types";
 // Generate static params for top businesses.
 // In production this can be expanded to all known slugs.
 // For now generate the first 1000 most recently updated.
-export async function generateStaticParams() {
-  const supabase = createServerClient();
-  const { data } = await supabase
-    .from("businesses")
-    .select("slug")
-    .eq("status", "Active")
-    .not("slug", "is", null)
-    .order("updated_at", { ascending: false })
-    .limit(1000);
-
-  return (data ?? []).map((business) => ({ slug: business.slug as string }));
-}
-
 // App Router equivalent to fallback: "blocking"
 // Known paths are statically generated, unknown slugs render on demand.
 export const dynamicParams = true;
