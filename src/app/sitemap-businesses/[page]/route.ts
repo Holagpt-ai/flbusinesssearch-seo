@@ -51,7 +51,7 @@ export async function GET(request: NextRequest, { params }: { params: { page: st
    <priority>0.6</priority>
  </url>`,
         ];
-      }
+      },
     )
     .join('');
 
@@ -68,17 +68,6 @@ ${urls}
   });
 }
 
-// Generate sitemap index page that lists all business sitemap pages
-export async function generateStaticParams() {
-  const supabase = createServerClient();
-  const { count } = await supabase
-    .from('businesses')
-    .select('*', { count: 'exact', head: true })
-    .eq('status', 'Active')
-    .not('slug', 'is', null);
-
-  const totalPages = Math.ceil((count ?? 0) / PAGE_SIZE);
-  return Array.from({ length: Math.max(totalPages, 1) }, (_, i) => ({
-    page: String(i + 1),
-  }));
-}
+// Sitemap pages are generated on-demand per request — not pre-built at deploy time.
+// This keeps build times fast regardless of database size.
+export const dynamic = 'force-dynamic';
