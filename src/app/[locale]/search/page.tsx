@@ -188,13 +188,13 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
       <header className="border-b border-[#E8E4DC] bg-white px-6 py-4">
         <div className="mx-auto flex max-w-5xl items-center justify-between">
           <a
-            href="https://flbusinesssearch.com"
+            href={isEs ? "https://flbusinesssearch.com/es" : "https://flbusinesssearch.com"}
             className="font-display text-xl font-bold text-[#E8824A]"
           >
             FLBusinessSearch
           </a>
           <a
-            href="https://flbusinesssearch.com"
+            href={isEs ? "https://flbusinesssearch.com/es" : "https://flbusinesssearch.com"}
             className="text-sm text-[#6B6B6B] transition-colors hover:text-[#1A1A1A]"
           >
             ← {t("backToHome")}
@@ -421,7 +421,7 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
                           <p className="text-[10px] text-[#2A7F6F]">✓ {tCommon("noWebsite")}</p>
                         </div>
                       )}
-                      <span className="text-xs font-medium text-[#2A7F6F] hover:underline">
+                      <span className="inline-block rounded-full bg-[#E8824A] px-4 py-1.5 text-xs font-medium text-white transition-colors hover:bg-[#D4713A]">
                         {tCommon("viewProfile")} →
                       </span>
                     </div>

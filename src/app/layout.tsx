@@ -5,7 +5,10 @@ export const metadata: Metadata = {
   title: "FLBusinessSearch | Florida Business Name Search & LLC Filing",
   description:
     "Search 3.5M+ Florida businesses free. Check name availability, file your LLC, get lead alerts & protect your annual report. Updated daily from Sunbiz.org.",
-  metadataBase: new URL("https://flbusinesssearch.com"),
+  metadataBase: new URL("https://search.flbusinesssearch.com"),
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "FLBusinessSearch | Florida Business Name Search & LLC Filing",
     description: "Search 3.5M+ Florida businesses free. Updated daily from Sunbiz.org.",

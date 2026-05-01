@@ -26,6 +26,9 @@ type BusinessRow = {
   county: string | null;
   county_slug: string | null;
   registered_agent: string | null;
+  enrichment_status: string | null;
+  category: string | null;
+  category_slug: string | null;
 };
 
 function jsonResponse(body: unknown, status = 200): Response {
@@ -833,15 +836,19 @@ async function runEnrichmentAgent(params: {
   if (params.businessIds && params.businessIds.length > 0) {
     const { data, error } = await supabase
       .from("businesses")
-      .select("id, name, filing_date, county, county_slug, registered_agent")
+      .select(
+        "id, name, filing_date, county, county_slug, registered_agent, enrichment_status, category, category_slug",
+      )
       .in("id", params.businessIds);
     if (error) throw error;
     rows = (data ?? []) as BusinessRow[];
   } else {
     const { data, error } = await supabase
       .from("businesses")
-      .select("id, name, filing_date, county, county_slug, registered_agent")
-      .eq("enrichment_status", "pending")
+      .select(
+        "id, name, filing_date, county, county_slug, registered_agent, enrichment_status, category, category_slug",
+      )
+      .in("enrichment_status", ["pending", "website_pending"])
       .order("created_at", { ascending: true })
       .limit(200);
     if (error) throw error;
@@ -886,6 +893,11 @@ async function runEnrichmentAgent(params: {
         : (website.website_detected === false ? "warm" : "basic");
       if (hot_lead) hotLeadsFound += 1;
 
+      const isWebsitePending = r.enrichment_status === "website_pending";
+      const categoryUpdate = isWebsitePending
+        ? {}
+        : { category, category_slug };
+
       const nowIso = new Date().toISOString();
       const { error: upErr } = await supabase
         .from("businesses")
@@ -894,8 +906,7 @@ async function runEnrichmentAgent(params: {
           website_url: website.website_url,
           county,
           county_slug,
-          category,
-          category_slug,
+          ...categoryUpdate,
           annual_report_risk,
           hot_lead,
           lead_quality,
