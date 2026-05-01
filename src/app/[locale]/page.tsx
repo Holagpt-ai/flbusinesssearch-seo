@@ -1,12 +1,7 @@
 import { redirect } from "next/navigation";
 
-export default function LocaleHomePage({
-  params: { locale },
-}: {
-  params: { locale: string };
-}) {
+export default function LocaleHomePage() {
   // The main homepage lives on the React app
-  // This Next.js app handles SEO pages only
-  // Redirect to main site
-  redirect(`https://flbusinesssearch.com${locale === "es" ? "/es" : ""}`);
+  // /es route does not exist on the React app — always redirect to EN homepage
+  redirect("https://flbusinesssearch.com");
 }
