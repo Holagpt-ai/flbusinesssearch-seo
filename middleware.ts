@@ -44,10 +44,14 @@ export default function middleware(request: NextRequest) {
   }
 
   // Spanish search path: /es/buscar → /es/search
+  // Rewrite the pathname then let intlMiddleware set locale context correctly
   if (pathname === "/es/buscar") {
     const url = request.nextUrl.clone();
     url.pathname = "/es/search";
-    return NextResponse.rewrite(url);
+    const rewrittenRequest = new NextRequest(url, request);
+    const intlResponse = intlMiddleware(rewrittenRequest);
+    const rewriteResponse = NextResponse.rewrite(url, { headers: intlResponse.headers });
+    return rewriteResponse;
   }
 
   return intlMiddleware(request);
