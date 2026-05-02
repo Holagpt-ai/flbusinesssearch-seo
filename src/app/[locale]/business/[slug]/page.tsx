@@ -209,12 +209,20 @@ export default async function BusinessProfilePage({
               {filingDate && ` · ${t("filed")} ${filingDate}`}
             </p>
           </div>
-          <a
-            href="https://flbusinesssearch.com/file-llc"
-            className="whitespace-nowrap rounded-full bg-[#E8824A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#D4713A]"
-          >
-            {t("startLLC")}
-          </a>
+          <div className="flex flex-col gap-2">
+            <a
+              href={`${searchPath}?county=${encodeURIComponent(business.county ?? "")}`}
+              className="whitespace-nowrap rounded-full bg-[#E8824A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#D4713A] text-center"
+            >
+              Browse {business.county || "Florida"} businesses →
+            </a>
+            <a
+              href="https://flbusinesssearch.com/shield"
+              className="whitespace-nowrap rounded-full border border-[#E8824A] px-5 py-2.5 text-sm font-medium text-[#E8824A] transition-colors hover:bg-[#FDF0E8] text-center"
+            >
+              Protect your annual report →
+            </a>
+          </div>
         </div>
 
         <section className="mb-8">
