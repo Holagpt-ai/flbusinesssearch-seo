@@ -183,7 +183,7 @@ export default async function BusinessProfilePage({
           <span className="text-[#1A1A1A]">{business.name}</span>
         </nav>
 
-        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+        <div className="mb-8 flex flex-wrap items-start justify-between gap-4 md:flex-nowrap">
           <div>
             <div className="mb-3 flex items-center gap-2">
               <span
@@ -209,7 +209,7 @@ export default async function BusinessProfilePage({
               {filingDate && ` · ${t("filed")} ${filingDate}`}
             </p>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 shrink-0 md:items-end">
             <a
               href={`${searchPath}?county=${encodeURIComponent(business.county ?? "")}`}
               className="whitespace-nowrap rounded-full bg-[#E8824A] px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#D4713A] text-center"
