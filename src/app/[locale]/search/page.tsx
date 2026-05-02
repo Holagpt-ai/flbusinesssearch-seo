@@ -121,7 +121,10 @@ export default async function SearchPage({ params, searchParams }: SearchPagePro
     .order("name", { ascending: true });
 
   // Build query
-  let query = supabase.from("businesses").select("*", { count: "exact" });
+  let query = supabase.from("businesses").select(
+    "id, name, slug, entity_type, county, filing_date, status, hot_lead, website_detected, owner_name, registered_agent, category_slug",
+    { count: "planned" }
+  );
 
   if (q) {
     query = query.ilike("name_normalized", `%${normalizeName(q)}%`);
