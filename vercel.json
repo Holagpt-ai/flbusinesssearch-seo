@@ -3,6 +3,14 @@
     {
       "path": "/api/cron/indexing-agent",
       "schedule": "15 * * * *"
+    },
+    {
+      "path": "/api/cron/alert-matching-agent",
+      "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/email-delivery-agent",
+      "schedule": "30 9 * * *"
     }
   ]
 }
